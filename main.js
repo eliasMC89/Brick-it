@@ -14,23 +14,26 @@ function main() {
 
   var startButton;
   var restartButton;
+  var backToMenuButton;
 
   var livesElement;
   var scoreElement;
+
+  var pressedButton;
   
   function buildSplash() {
     splashScreen = buildDOM(`
       <main>
         <h1>Goal!</h1>
-        <button>Play</button>
-        <button>How to Play</button>
-        <button>High Scores</button>
+        <button class="play">Play</button>
+        <button class="instructions">How to Play</button>
+        <button class="high-scores">High Scores</button>
       </main>
     `)
 
     document.body.prepend(splashScreen);
 
-    startButton = document.querySelector('button');
+    startButton = document.querySelector('.play');
 
     startButton.addEventListener('click', destroySplash);
   }
@@ -46,8 +49,9 @@ function main() {
     gameScreen = buildDOM(`
       <main>
         <p class="lives-label">Lives: <span class="lives">3</span></p>
-        <p class="score-label">Score: <span class="score">0</span></p> 
-        <canvas width="640px" height="480px"></canvas>  
+        <p class="score-label">Score: <span class="score">0</span></p>
+        <button class="toGameOver">GameOver</button>
+        <canvas width="800px" height="400px"></canvas>  
       </main>
     `);
 
@@ -56,6 +60,12 @@ function main() {
     var canvasElement = document.querySelector('canvas');
     livesElement = document.querySelector('.lives');
     scoreElement = document.querySelector('.score');
+
+
+    /// test
+    var buttonGameOver = document.querySelector('.toGameOver');
+
+    buttonGameOver.addEventListener ('click', destroyGameScreen);
 
   }
 
@@ -76,26 +86,30 @@ function main() {
     gameOverScreen = buildDOM(`
       <main>
         <h1>Game Over</h1>
-        <button>Try Again</button>
-        <button>Back to Main Menu</button>
+        <button class="restart">Try Again</button>
+        <button class="backToMenu">Back to Main Menu</button>
         <button>High Scores</button>
       </main>  
     `);
 
     document.body.prepend(gameOverScreen);
 
-    restartButton = document.querySelector('button');
+    restartButton = document.querySelector('.restart');
+    backToMenuButton = document.querySelector('.backToMenu');
 
-    restartButton.addEventListener('click', destroyGameOverScreen)
+    pressedButton = restartButton.addEventListener('click', destroyGameOverScreen);
+    backToMenuButton.addEventListener('click', destroyGameOverScreen);
 
   }
 
   function destroyGameOverScreen() {
     gameOverScreen.remove();
 
-    restartButton.removeEventListener('click', destroyGameOverScreen);
-
-    buildGameScreen();
+    if (pressedButton){
+      buildGameScreen();
+    }else{
+      buildSplash();
+    }
   }
 
   buildSplash();
