@@ -102,7 +102,18 @@ GameOverScreen
 
 ## Task
 
-
+- create files
+- build main
+- 3 states transition
+- build game
+- build loop
+- build ball
+- build goal
+- move ball
+- move goal
+- check dead collisions
+- check goal collisions
+- check score collisions
 
 ## Links
 
