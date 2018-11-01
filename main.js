@@ -18,8 +18,6 @@ function main() {
 
   var livesElement;
   var scoreElement;
-
-  var pressedButton;
   
   function buildSplash() {
     splashScreen = buildDOM(`
@@ -97,15 +95,15 @@ function main() {
     restartButton = document.querySelector('.restart');
     backToMenuButton = document.querySelector('.backToMenu');
 
-    pressedButton = restartButton.addEventListener('click', destroyGameOverScreen);
+    restartButton.addEventListener('click', destroyGameOverScreen);
     backToMenuButton.addEventListener('click', destroyGameOverScreen);
 
   }
 
-  function destroyGameOverScreen() {
+  function destroyGameOverScreen(event) {
     gameOverScreen.remove();
 
-    if (pressedButton){
+    if (event.target.className === "restart"){
       buildGameScreen();
     }else{
       buildSplash();
