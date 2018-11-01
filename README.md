@@ -81,11 +81,28 @@ setSpeed()
 increaseSpeed()
 ```
 
-
-
 ## States and State Transitions
 
+SplashScreen
+- buildSplash
+- destroyGameOver
+- addEventListener (start game)
+
+GameScreen
+- buildGameScreen
+- destroySplash
+- destroyGameOverScreen
+- new Game
+- start.Game
+
+GameOverScreen
+- buildGameOverScreen
+- destroyGameScreen
+- addEventListener (start game) 
+
 ## Task
+
+
 
 ## Links
 
