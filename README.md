@@ -10,6 +10,8 @@ A ball is shot towards a moving goal.
 
 ## Backlog
 
+- Change goal size
+- Change goal speed
 - Instructions
 - Ball direction
 - Bouncing
