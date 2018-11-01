@@ -75,9 +75,9 @@ Goal() {
 update()
 draw()
 checkCollisionWithLimits()
-setSize()
+[*setSize()
 setDirection()
-[*setSpeed()
+setSpeed()
 increaseSpeed()*]
 ```
 
