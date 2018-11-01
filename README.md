@@ -77,8 +77,8 @@ draw()
 checkCollisionWithLimits()
 setSize()
 setDirection()
-setSpeed()
-increaseSpeed()
+[*setSpeed()
+increaseSpeed()*]
 ```
 
 ## States and State Transitions
