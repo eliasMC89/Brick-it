@@ -22,6 +22,7 @@ A ball is shot towards a moving goal.
 
 ## Data Structure
 
+```
 main.js
 
 buildSplash();
@@ -30,7 +31,7 @@ buildGameScreen();
 destroyGameScreen();
 buildGameOverScreen();
 destroyGameOverScreen();
-
+```
 
 
 ## States and State Transitions
