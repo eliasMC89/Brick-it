@@ -1,4 +1,4 @@
-# Goal
+# Goal!
 
 ## Description
 
@@ -21,6 +21,17 @@ A ball is shot towards a moving goal.
 - Music
 
 ## Data Structure
+
+main.js
+
+buildSplash();
+destroySplash();
+buildGameScreen();
+destroyGameScreen();
+buildGameOverScreen();
+destroyGameOverScreen();
+
+
 
 ## States and State Transitions
 
