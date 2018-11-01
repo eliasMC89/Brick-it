@@ -22,9 +22,8 @@ A ball is shot towards a moving goal.
 
 ## Data Structure
 
-```
 main.js
-
+```
 buildSplash();
 destroySplash();
 buildGameScreen();
@@ -32,6 +31,56 @@ destroyGameScreen();
 buildGameOverScreen();
 destroyGameOverScreen();
 ```
+
+game.js
+```
+Game () {
+  this.ball
+  this.goal
+}
+
+start();
+starLoop();
+updateAll();
+clearAll();
+drawAll();
+checkAllCollisions();
+finishGame();
+```
+
+ball.js
+```
+Ball() {
+  this.position
+  this.size
+  this.lives
+  this.score
+  this.direction
+}
+
+update()
+draw()
+checkCollisionWithWall()
+checkCollisionWithGoal()
+```
+
+goal.js
+```
+Goal() {
+  this.position
+  this.size
+  this.speed
+}
+
+update()
+draw()
+checkCollisionWithLimits()
+setSize()
+setDirection()
+setSpeed()
+increaseSpeed()
+```
+
 
 
 ## States and State Transitions
