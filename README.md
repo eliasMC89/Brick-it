@@ -39,6 +39,7 @@ game.js
 Game () {
   this.ball
   this.goal
+  this.ctx
 }
 
 start();
@@ -58,6 +59,7 @@ Ball() {
   this.lives
   this.score
   this.direction
+  this.ctx
 }
 
 update()
@@ -72,6 +74,7 @@ Goal() {
   this.position
   this.size
   this.speed
+  this.ctx
 }
 
 update()
