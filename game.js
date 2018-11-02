@@ -13,12 +13,23 @@ Game.prototype.play = function() {
   this.ctx = this.canvasElement.getContext('2d');
 
   this.startLoop();
+
+  
 }
 
 Game.prototype.startLoop = function () {
   
   this.bullet = new Bullet (this.canvasElement);
   this.brick = new Brick (this.canvasElement);
+
+  this.handleKeyUp = function(event) {
+    if (event.key === ' ') {
+      this.bullet.setDirection(1);
+    } 
+    
+  }.bind(this)
+
+  document.addEventListener ('keyup', this.handleKeyUp);
   
   var loop = function () {
     
@@ -36,7 +47,7 @@ Game.prototype.startLoop = function () {
 
 }
 
-Game.prototype.updateAll = function () {
+Game.prototype.updateAll = function (event) {
   this.bullet.update();
   this.brick.update();
 }
