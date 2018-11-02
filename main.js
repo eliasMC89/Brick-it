@@ -22,7 +22,7 @@ function main() {
   function buildSplash() {
     splashScreen = buildDOM(`
       <main>
-        <h1>Goal!</h1>
+        <h1>Brick it</h1>
         <button class="play">Play</button>
         <button class="instructions">How to Play</button>
         <button class="high-scores">High Scores</button>

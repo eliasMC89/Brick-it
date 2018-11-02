@@ -1,14 +1,14 @@
 'use strict'
 
 function Game () {
-  this.ball = null;
-  this.goal = null;
+  this.bullet = null;
+  this.brick = null;
   this.canvasElement = canvasElement;
-  this.initialBallPosition = {
+  this.initialBulletPosition = {
     x: 0,
     y: this.canvasElement.height / 2
   }
-  this.initialGoalPosition = {
+  this.initialBrickPosition = {
     x: this.canvasElement.width,
     y: this.canvasElement.height / 2
   }
@@ -23,6 +23,17 @@ Game.prototype.play = function() {
 }
 
 Game.prototype.startLoop = function () {
+
+  // var loop = function () {
+
+  //   console.log ('looping');
+
+  //   if (!gameIsOver){
+  //     requestAnimationFrame(loop);
+  //   }
+  // }
+
+  // loop();
 
 }
 
