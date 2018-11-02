@@ -4,14 +4,6 @@ function Game (canvasElement) {
   this.bullet = null;
   this.brick = null;
   this.canvasElement = canvasElement;
-  this.initialBulletPosition = {
-    x: 0,
-    y: this.canvasElement.height / 2
-  }
-  this.initialBrickPosition = {
-    x: this.canvasElement.width,
-    y: this.canvasElement.height / 2
-  }
   this.gameIsOver = false;
 }
 
@@ -19,14 +11,19 @@ Game.prototype.play = function() {
 
   this.ctx = this.canvasElement.getContext('2d');
 
+  
   this.startLoop();
 }
 
 Game.prototype.startLoop = function () {
-
+  
+  this.bullet = new Bullet (this.canvasElement);
+  this.drawAll();
   var loop = function () {
 
     console.log ('looping');
+    
+    //this.clearAll();
 
     if (!this.gameIsOver){
       requestAnimationFrame(loop);
@@ -43,6 +40,8 @@ Game.prototype.updateAll = function () {
 
 Game.prototype.clearAll = function () {
 
+  this.ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
+
 }
 
 Game.prototype.updateAll = function () {
@@ -50,7 +49,7 @@ Game.prototype.updateAll = function () {
 }
 
 Game.prototype.drawAll = function () {
-
+  this.bullet.draw();
 }
 
 Game.prototype.checkAllCollisions = function () {
