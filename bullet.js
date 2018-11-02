@@ -10,7 +10,7 @@ function Bullet (canvasElement) {
   this.ctx = this.canvasElement.getContext('2d');
 }
 
-Bullet.prototype.update = function (event) {
+Bullet.prototype.update = function () {
 
   this.x += this.speed * this.direction;
 }
