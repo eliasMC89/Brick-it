@@ -4,7 +4,7 @@ function Brick (canvasElement) {
   this.x = canvasElement.width - 50;
   this.y = 0;                              
   this.sizeX = 5;
-  this.sizeY = 70;
+  this.sizeY = 80;
   this.speed = 5;
   this.direction = 0;
   this.canvasElement = canvasElement;
@@ -31,6 +31,10 @@ Brick.prototype.setDirection = function (newDirection) {
 
 Brick.prototype.setSpeed = function (speedVariation) {
   this.speed += speedVariation;
+}
+
+Brick.prototype.setLength = function (lengthVariation) {
+  this.sizeY += lengthVariation;
 }
 
 Brick.prototype.checkCollisionWithLimits = function () {
