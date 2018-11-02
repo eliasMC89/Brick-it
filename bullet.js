@@ -5,14 +5,14 @@ function Bullet (canvasElement) {
   this.y = canvasElement.height / 2;
   this.size = 5;
   this.lives = 3;
-  // this.speed = 5;
-  // this.direction = 0;
+  this.speed = 5;
+  this.direction = 1;
   this.canvasElement = canvasElement;
   this.ctx = this.canvasElement.getContext('2d');
 }
 
 Bullet.prototype.update = function () {
-
+  this.x += this.speed * this.direction;
 }
 
 Bullet.prototype.draw = function () {

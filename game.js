@@ -18,12 +18,14 @@ Game.prototype.play = function() {
 Game.prototype.startLoop = function () {
   
   this.bullet = new Bullet (this.canvasElement);
-  this.drawAll();
+  
   var loop = function () {
-
+    
     console.log ('looping');
     
-    //this.clearAll();
+    this.updateAll();
+    this.clearAll();
+    this.drawAll();
 
     if (!this.gameIsOver){
       requestAnimationFrame(loop);
@@ -35,16 +37,12 @@ Game.prototype.startLoop = function () {
 }
 
 Game.prototype.updateAll = function () {
-
+  this.bullet.update();
 }
 
 Game.prototype.clearAll = function () {
 
   this.ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
-
-}
-
-Game.prototype.updateAll = function () {
 
 }
 
