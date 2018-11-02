@@ -29,6 +29,10 @@ Brick.prototype.setDirection = function (newDirection) {
   this.direction = newDirection;
 }
 
+Brick.prototype.setSpeed = function (speedVariation) {
+  this.speed += speedVariation;
+}
+
 Brick.prototype.checkCollisionWithLimits = function () {
   if (this.y <= 0) {
     this.setDirection(1);

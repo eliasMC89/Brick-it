@@ -78,6 +78,7 @@ Game.prototype.checkAllCollisions = function () {
   }else if (this.bullet.checkCollisionWithBrick(this.brick)){
     this.score++;
     this.addScore();
+    this.brick.setSpeed(3);
     this.bullet = new Bullet (this.canvasElement);
   }
 }
