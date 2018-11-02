@@ -18,6 +18,8 @@ function main() {
 
   var livesElement;
   var scoreElement;
+
+  var game;
   
   function buildSplash() {
     splashScreen = buildDOM(`
@@ -58,12 +60,15 @@ function main() {
     var canvasElement = document.querySelector('canvas');
     livesElement = document.querySelector('.lives');
     scoreElement = document.querySelector('.score');
-
+    
+    game = new Game (canvasElement);
+    game.play();
 
     /// test
     var buttonGameOver = document.querySelector('.toGameOver');
 
     buttonGameOver.addEventListener ('click', destroyGameScreen);
+
 
   }
 
@@ -78,6 +83,7 @@ function main() {
   function destroyGameScreen() {
     gameScreen.remove();
     buildGameOverScreen();
+    game.gameIsOver = true;
   }
 
   function buildGameOverScreen() {

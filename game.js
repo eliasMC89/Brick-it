@@ -1,6 +1,6 @@
 'use strict'
 
-function Game () {
+function Game (canvasElement) {
   this.bullet = null;
   this.brick = null;
   this.canvasElement = canvasElement;
@@ -24,16 +24,16 @@ Game.prototype.play = function() {
 
 Game.prototype.startLoop = function () {
 
-  // var loop = function () {
+  var loop = function () {
 
-  //   console.log ('looping');
+    console.log ('looping');
 
-  //   if (!gameIsOver){
-  //     requestAnimationFrame(loop);
-  //   }
-  // }
+    if (!this.gameIsOver){
+      requestAnimationFrame(loop);
+    }
+  }.bind(this);
 
-  // loop();
+  loop();
 
 }
 
