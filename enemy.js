@@ -1,8 +1,8 @@
 'use strict'
 
 function Enemy (canvasElement) {
-  this.x = 5;
-  this.y = canvasElement.height / 2;
+  this.x = canvasElement.width - 100;
+  this.y = 100;
   this.size = 10;
   this.speed = 3;
   this.direction = 0;
