@@ -39,6 +39,7 @@ Game.prototype.startLoop = function () {
 
 Game.prototype.updateAll = function () {
   this.bullet.update();
+  this.brick.update();
 }
 
 Game.prototype.clearAll = function () {
