@@ -42,48 +42,48 @@ function main() {
     splashScreen.remove();
     startButton.removeEventListener('click', destroySplash);
 
-    buildGameScreen();
+    buildGameScreen(3);
   }
 
-  function buildGameScreen() {
+  function buildGameScreen(lives) {
     gameScreen = buildDOM(`
       <main>
-        <p class="lives-label">Lives: <span class="lives">3</span></p>
+        <p class="lives">Lives: <span class="value"></span></p>
         <p class="score-label">Score: <span class="score">0</span></p>
-        <button class="toGameOver">GameOver</button>
         <canvas width="800px" height="400px"></canvas>  
       </main>
     `);
 
     document.body.prepend(gameScreen);
-
-    var canvasElement = document.querySelector('canvas');
-    livesElement = document.querySelector('.lives');
-    scoreElement = document.querySelector('.score');
     
-    game = new Game (canvasElement);
+    var canvasElement = document.querySelector('canvas');
+    livesElement = document.querySelector('span');
+    //scoreElement = document.querySelector('.score');
+
+    
+    livesElement.innerText = lives;
+    
+    
+    
+    game = new Game (canvasElement, lives);
     game.play();
 
-    /// test
-    var buttonGameOver = document.querySelector('.toGameOver');
-
-    buttonGameOver.addEventListener ('click', destroyGameScreen);
-
+    game.gameOverCallback(destroyGameScreen);
+    game.lifeLostCallback(updateLives);
 
   }
 
-  function updateLives(lives) {
-    livesElement.innerText = lives;
+  function updateLives() {
+    livesElement.innerText = game.lives;
   }
 
-  function updateScore(score) {
-    scoreElement.innerText = score;
-  }
+  // function updateScore(score) {
+  //   scoreElement.innerText = score;
+  // }
 
   function destroyGameScreen() {
     gameScreen.remove();
     buildGameOverScreen();
-    game.gameIsOver = true;
   }
 
   function buildGameOverScreen() {
@@ -110,7 +110,7 @@ function main() {
     gameOverScreen.remove();
 
     if (event.target.className === "restart"){
-      buildGameScreen();
+      buildGameScreen(3);
     }else{
       buildSplash();
     }

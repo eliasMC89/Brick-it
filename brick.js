@@ -13,17 +13,9 @@ function Brick (canvasElement) {
 
 Brick.prototype.update = function () {
 
-  if (this.y <= 0) {
-    this.setDirection(1);
-  }
-
-  if (this.y >= this.canvasElement.height - this.sizeY) {
-    this.setDirection(-1);
-  }
-
-  this.y += this.speed * this.direction;
+  this.checkCollisionWithLimits();
   
-  //this.y += this.speed * this.direction;
+  this.y += this.speed * this.direction;
 
 }
 
@@ -38,5 +30,10 @@ Brick.prototype.setDirection = function (newDirection) {
 }
 
 Brick.prototype.checkCollisionWithLimits = function () {
-
+  if (this.y <= 0) {
+    this.setDirection(1);
+  }
+  if (this.y >= this.canvasElement.height - this.sizeY) {
+    this.setDirection(-1);
+  }
 }

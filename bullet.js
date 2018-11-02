@@ -1,10 +1,9 @@
 'use strict'
 
 function Bullet (canvasElement) {
-  this.x = 10;
+  this.x = 5;
   this.y = canvasElement.height / 2;
   this.size = 5;
-  this.lives = 3;
   this.speed = 5;
   this.direction = 1;
   this.canvasElement = canvasElement;
@@ -23,12 +22,16 @@ Bullet.prototype.draw = function () {
 
 }
 
-Bullet.prototype.checkCollisionWithBrick = function () {
+Bullet.prototype.checkCollisionWithMiss = function () {
 
-
+  if (this.x >= this.canvasElement.width - this.size){
+    return true;
+  } else{
+    return false;
+  }
 }
 
-Bullet.prototype.checkCollisionWithMiss = function () {
+Bullet.prototype.checkCollisionWithBrick = function () {
 
 
 }

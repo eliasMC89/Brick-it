@@ -1,17 +1,17 @@
 'use strict'
 
-function Game (canvasElement) {
+function Game (canvasElement, lives) {
   this.bullet = null;
   this.brick = null;
   this.canvasElement = canvasElement;
   this.gameIsOver = false;
+  this.lives = lives;
 }
 
 Game.prototype.play = function() {
 
   this.ctx = this.canvasElement.getContext('2d');
 
-  
   this.startLoop();
 }
 
@@ -22,8 +22,7 @@ Game.prototype.startLoop = function () {
   
   var loop = function () {
     
-    console.log ('looping');
-    
+    this.checkAllCollisions();
     this.updateAll();
     this.clearAll();
     this.drawAll();
@@ -54,9 +53,31 @@ Game.prototype.drawAll = function () {
 }
 
 Game.prototype.checkAllCollisions = function () {
+  if (this.bullet.checkCollisionWithMiss()){
+    if (this.lives > 1){
+      this.lives--;
+      this.removeLife();
+      this.bullet = new Bullet (this.canvasElement);
+    } else{
+      this.gameIsOver = true;
+      this.finishGame();
 
+    }
+  }
 }
 
-Game.prototype.finishGame = function () {
+Game.prototype.gameOverCallback = function(callback) {
+  this.gameOverCallback = callback;
+}
 
+Game.prototype.lifeLostCallback = function(callback) {
+  this.lifeLostCallback = callback;
+}
+
+Game.prototype.removeLife = function () {
+  this.lifeLostCallback();
+}
+
+Game.prototype.finishGame = function() {
+  this.gameOverCallback();
 }
