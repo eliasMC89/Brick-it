@@ -36,15 +36,19 @@ Bullet.prototype.checkCollisionWithMiss = function () {
   }
 }
 
-// Bullet.prototype.checkCollisionWithBrick = function () {
+Bullet.prototype.checkCollisionWithBrick = function (brick) {
 
-//   var collides = 
-  
-//   // var collidesTop = enemy.y <= this.y + this.size;
-//   // var collidesBottom = enemy.y + enemy.size >= this.y;
-//   // var collidesRight = enemy.x <= this.x + this.size;
-  
-//   // return collidesRight && collidesBottom && collidesTop;
+  var distX = Math.abs(this.x - brick.x-brick.sizeX/2);
+  var distY = Math.abs(this.y - brick.y-brick.sizeY/2);
 
+  if (distX > (brick.sizeX/2 + this.size)) { return false; }
+  if (distY > (brick.sizeY/2 + this.size)) { return false; }
 
-// }
+  if (distX <= (brick.sizeX/2)) { return true; } 
+  if (distY <= (brick.sizeY/2)) { return true; }
+
+  var dx=distX-brick.sizeX/2;
+  var dy=distY-brick.sizeY/2;
+  return (dx*dx+dy*dy<=(this.size*this.size));
+
+}

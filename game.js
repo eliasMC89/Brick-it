@@ -6,6 +6,7 @@ function Game (canvasElement, lives) {
   this.canvasElement = canvasElement;
   this.gameIsOver = false;
   this.lives = lives;
+  this.score = 0;
 }
 
 Game.prototype.play = function() {
@@ -74,6 +75,10 @@ Game.prototype.checkAllCollisions = function () {
       this.finishGame();
 
     }
+  }else if (this.bullet.checkCollisionWithBrick(this.brick)){
+    this.score++;
+    this.addScore();
+    this.bullet = new Bullet (this.canvasElement);
   }
 }
 
@@ -85,10 +90,19 @@ Game.prototype.lifeLostCallback = function(callback) {
   this.lifeLostCallback = callback;
 }
 
-Game.prototype.removeLife = function () {
-  this.lifeLostCallback();
+Game.prototype.scoreUpdateCallback = function (callback){
+  this.scoreUpdateCallback = callback;
 }
 
 Game.prototype.finishGame = function() {
   this.gameOverCallback();
 }
+
+Game.prototype.removeLife = function () {
+  this.lifeLostCallback();
+}
+
+Game.prototype.addScore = function () {
+  this.scoreUpdateCallback();
+}
+

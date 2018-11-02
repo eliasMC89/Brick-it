@@ -42,7 +42,7 @@ function main() {
     splashScreen.remove();
     startButton.removeEventListener('click', destroySplash);
 
-    buildGameScreen(3);
+    buildGameScreen(3, 0);
   }
 
   function buildGameScreen(lives) {
@@ -57,8 +57,8 @@ function main() {
     document.body.prepend(gameScreen);
     
     var canvasElement = document.querySelector('canvas');
-    livesElement = document.querySelector('span');
-    //scoreElement = document.querySelector('.score');
+    livesElement = document.querySelector('span.value');
+    scoreElement = document.querySelector('span.score');
 
     
     livesElement.innerText = lives;
@@ -70,6 +70,7 @@ function main() {
 
     game.gameOverCallback(destroyGameScreen);
     game.lifeLostCallback(updateLives);
+    game.scoreUpdateCallback(updateScore);
 
   }
 
@@ -77,9 +78,9 @@ function main() {
     livesElement.innerText = game.lives;
   }
 
-  // function updateScore(score) {
-  //   scoreElement.innerText = score;
-  // }
+  function updateScore() {
+    scoreElement.innerText = game.score;
+  }
 
   function destroyGameScreen() {
     gameScreen.remove();
@@ -110,7 +111,7 @@ function main() {
     gameOverScreen.remove();
 
     if (event.target.className === "restart"){
-      buildGameScreen(3);
+      buildGameScreen(3, 0);
     }else{
       buildSplash();
     }
