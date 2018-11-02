@@ -18,6 +18,7 @@ Game.prototype.play = function() {
 Game.prototype.startLoop = function () {
   
   this.bullet = new Bullet (this.canvasElement);
+  this.brick = new Brick (this.canvasElement);
   
   var loop = function () {
     
@@ -48,6 +49,7 @@ Game.prototype.clearAll = function () {
 
 Game.prototype.drawAll = function () {
   this.bullet.draw();
+  this.brick.draw();
 }
 
 Game.prototype.checkAllCollisions = function () {
