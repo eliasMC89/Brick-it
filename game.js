@@ -26,14 +26,14 @@ Game.prototype.startLoop = function () {
   this.enemy = new Enemy (this.canvasElement);
   this.extraLife = new ExtraLife (this.canvasElement);
 
-  this.handleKeyUp = function(event) {
+  this.handleKeyDown = function(event) {
     if (event.key === ' ') {
       this.bullet.setDirection(1);
     } 
     
   }.bind(this)
 
-  document.addEventListener ('keyup', this.handleKeyUp);
+  document.addEventListener ('keydown', this.handleKeyDown);
   
   var loop = function () {
     
