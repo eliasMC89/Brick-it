@@ -9,6 +9,7 @@ function Game (canvasElement, lives) {
   this.gameIsOver = false;
   this.lives = lives;
   this.score = 0;
+  this.level = 1;
 }
 
 Game.prototype.play = function() {
@@ -82,8 +83,10 @@ Game.prototype.checkAllCollisions = function () {
 
     }
   }else if (this.bullet.checkCollisionWithBrick(this.brick)){
-    this.score++;
+    this.score += 5;
+    this.level++;
     this.addScore();
+    this.addLevel();
     this.brick.setSpeed(2);
     this.brick.setLength(-10);
     this.bullet = new Bullet (this.canvasElement);
@@ -117,6 +120,10 @@ Game.prototype.scoreUpdateCallback = function (callback){
   this.scoreUpdateCallback = callback;
 }
 
+Game.prototype.levelUpdateCallback = function (callback){
+  this.levelUpdateCallback = callback;
+}
+
 Game.prototype.finishGame = function() {
   this.gameOverCallback();
 }
@@ -127,5 +134,9 @@ Game.prototype.removeLife = function () {
 
 Game.prototype.addScore = function () {
   this.scoreUpdateCallback();
+}
+
+Game.prototype.addLevel = function () {
+  this.levelUpdateCallback();
 }
 

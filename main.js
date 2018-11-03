@@ -18,6 +18,7 @@ function main() {
 
   var livesElement;
   var scoreElement;
+  var levelElement;
 
   var game;
   
@@ -42,14 +43,15 @@ function main() {
     splashScreen.remove();
     startButton.removeEventListener('click', destroySplash);
 
-    buildGameScreen(3, 0);
+    buildGameScreen(3);
   }
 
   function buildGameScreen(lives) {
     gameScreen = buildDOM(`
       <main>
-        <p class="lives">Lives: <span class="value"></span></p>
-        <p class="score-label">Score: <span class="score">0</span></p>
+        <p class="lives">Lives: <span class="lives-value"></span></p>
+        <p class="level">Level: <span class="level-value">1</span></p>
+        <p class="score">Score: <span class="score-value">0</span></p>
         <canvas width="650px" height="500px"></canvas>  
       </main>
     `);
@@ -57,13 +59,13 @@ function main() {
     document.body.prepend(gameScreen);
     
     var canvasElement = document.querySelector('canvas');
-    livesElement = document.querySelector('span.value');
-    scoreElement = document.querySelector('span.score');
+    livesElement = document.querySelector('span.lives-value');
+    scoreElement = document.querySelector('span.score-value');
+    levelElement = document.querySelector('span.level-value');
+
 
     
     livesElement.innerText = lives;
-    
-    
     
     game = new Game (canvasElement, lives);
     game.play();
@@ -71,6 +73,7 @@ function main() {
     game.gameOverCallback(destroyGameScreen);
     game.lifeLostCallback(updateLives);
     game.scoreUpdateCallback(updateScore);
+    game.levelUpdateCallback(updateLevel);
 
   }
 
@@ -80,6 +83,10 @@ function main() {
 
   function updateScore() {
     scoreElement.innerText = game.score;
+  }
+
+  function updateLevel() {
+    levelElement.innerText = game.level;
   }
 
   function destroyGameScreen() {
@@ -111,7 +118,7 @@ function main() {
     gameOverScreen.remove();
 
     if (event.target.className === "restart"){
-      buildGameScreen(3, 0);
+      buildGameScreen(3);
     }else{
       buildSplash();
     }
