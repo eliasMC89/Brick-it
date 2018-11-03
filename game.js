@@ -4,6 +4,7 @@ function Game (canvasElement, lives) {
   this.bullet = null;
   this.brick = null;
   this.enemy = null;
+  this.extraLife = null;
   this.canvasElement = canvasElement;
   this.gameIsOver = false;
   this.lives = lives;
@@ -24,6 +25,7 @@ Game.prototype.startLoop = function () {
   this.bullet = new Bullet (this.canvasElement);
   this.brick = new Brick (this.canvasElement);
   this.enemy = new Enemy (this.canvasElement);
+  this.extraLife = new ExtraLife (this.canvasElement);
 
   this.handleKeyUp = function(event) {
     if (event.key === ' ') {
@@ -54,6 +56,7 @@ Game.prototype.updateAll = function (event) {
   this.bullet.update();
   this.brick.update();
   this.enemy.update();
+  this.extraLife.update();
 }
 
 Game.prototype.clearAll = function () {
@@ -66,6 +69,7 @@ Game.prototype.drawAll = function () {
   this.bullet.draw();
   this.brick.draw();
   this.enemy.draw();
+  this.extraLife.draw();
 }
 
 Game.prototype.checkAllCollisions = function () {
