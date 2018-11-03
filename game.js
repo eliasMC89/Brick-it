@@ -16,8 +16,6 @@ Game.prototype.play = function() {
   this.ctx = this.canvasElement.getContext('2d');
 
   this.startLoop();
-
-  
 }
 
 Game.prototype.startLoop = function () {
@@ -89,7 +87,22 @@ Game.prototype.checkAllCollisions = function () {
     this.brick.setSpeed(2);
     this.brick.setLength(-10);
     this.bullet = new Bullet (this.canvasElement);
+
+  }else if (this.bullet.checkCollisionWithEnemy(this.enemy)){
+    if (this.lives > 1){
+      this.lives--;
+      this.removeLife();
+      this.bullet = new Bullet (this.canvasElement);
+    } else{
+      this.gameIsOver = true;
+      this.finishGame();
+    } 
+  } else if (this.bullet.checkCollisionWithExtraLife(this.extraLife)){
+      this.lives++;
+      this.removeLife();
+      this.bullet = new Bullet (this.canvasElement);
   }
+  
 }
 
 Game.prototype.gameOverCallback = function(callback) {

@@ -50,7 +50,7 @@ function main() {
       <main>
         <p class="lives">Lives: <span class="value"></span></p>
         <p class="score-label">Score: <span class="score">0</span></p>
-        <canvas width="800px" height="400px"></canvas>  
+        <canvas width="650px" height="500px"></canvas>  
       </main>
     `);
 
