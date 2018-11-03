@@ -75,17 +75,17 @@ Game.prototype.checkAllCollisions = function () {
   if (this.bullet.checkCollisionWithMiss()){
     if (this.lives > 1){
       this.lives--;
-      this.removeLife();
+      this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
     } else{
       this.gameIsOver = true;
-      this.finishGame();
+      this.endGame();
 
     }
   }else if (this.bullet.checkCollisionWithBrick(this.brick)){
     this.score += 5;
     this.level++;
-    this.addScore();
+    this.updateScore();
     this.addLevel();
     this.brick.setSpeed(2);
     this.brick.setLength(-10);
@@ -94,15 +94,15 @@ Game.prototype.checkAllCollisions = function () {
   }else if (this.bullet.checkCollisionWithEnemy(this.enemy)){
     if (this.lives > 1){
       this.lives--;
-      this.removeLife();
+      this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
     } else{
       this.gameIsOver = true;
-      this.finishGame();
+      this.endGame();
     } 
   } else if (this.bullet.checkCollisionWithExtraLife(this.extraLife)){
       this.lives++;
-      this.removeLife();
+      this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
   }
   
@@ -112,7 +112,7 @@ Game.prototype.gameOverCallback = function(callback) {
   this.gameOverCallback = callback;
 }
 
-Game.prototype.lifeLostCallback = function(callback) {
+Game.prototype.livesUpdateCallback = function(callback) {
   this.lifeLostCallback = callback;
 }
 
@@ -124,15 +124,15 @@ Game.prototype.levelUpdateCallback = function (callback){
   this.levelUpdateCallback = callback;
 }
 
-Game.prototype.finishGame = function() {
+Game.prototype.endGame = function() {
   this.gameOverCallback();
 }
 
-Game.prototype.removeLife = function () {
+Game.prototype.updateLife = function () {
   this.lifeLostCallback();
 }
 
-Game.prototype.addScore = function () {
+Game.prototype.updateScore = function () {
   this.scoreUpdateCallback();
 }
 

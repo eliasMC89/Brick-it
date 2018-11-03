@@ -71,7 +71,7 @@ function main() {
     game.play();
 
     game.gameOverCallback(destroyGameScreen);
-    game.lifeLostCallback(updateLives);
+    game.livesUpdateCallback(updateLives);
     game.scoreUpdateCallback(updateScore);
     game.levelUpdateCallback(updateLevel);
 
