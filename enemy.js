@@ -39,7 +39,7 @@ Enemy.prototype.setDirection = function (newDirection) {
 // }
 
 Enemy.prototype.checkCollisionWithLimits = function () {
-  if (this.y <= 0 + this.size) {
+  if (this.y <= this.size) {
     this.setDirection(1);
   }
   if (this.y >= this.canvasElement.height - this.size) {

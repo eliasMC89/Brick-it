@@ -122,6 +122,8 @@ Game.prototype.checkAllCollisions = function () {
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
       this.arrow = new Arrow (this.canvasElement);
+  } else if (this.bullet.checkCollisionWithBounce()){
+      this.bullet.speed.y *= -1;
   }
   
 }

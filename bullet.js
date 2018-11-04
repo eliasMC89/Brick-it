@@ -11,6 +11,7 @@ function Bullet (canvasElement) {
     y: 0
   }
   this.startMove = 0;
+  this.bounce = null;
   this.canvasElement = canvasElement;
   this.ctx = this.canvasElement.getContext('2d');
 }
@@ -79,5 +80,17 @@ Bullet.prototype.checkCollisionWithExtraLife = function (extraLife) {
  
   return (Math.sqrt((extraLife.x-this.x)*(extraLife.x-this.x)+(extraLife.y-this.y)*(extraLife.y-this.y))<(this.size+extraLife.size));
 
+}
+
+Bullet.prototype.checkCollisionWithBounce = function () {
+
+  if (this.y <= this.size){
+    this.bounce = 'top';
+    return true;
+  } 
+  if (this.y >= this.canvasElement.height - this.size){
+    this.bounce = 'bottom';
+    return true;
+  }
 }
 
