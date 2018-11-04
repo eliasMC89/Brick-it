@@ -38,8 +38,10 @@ Game.prototype.startLoop = function () {
   this.changeArrowDirection = function (event) {
     if (event.key === 's'){
       this.arrow.moveArrow(1);
+      this.bullet.setSpeedAngle(1);
     } else if (event.key === 'w'){
       this.arrow.moveArrow(-1);
+      this.bullet.setSpeedAngle(-1);
     }
   }.bind(this);
 

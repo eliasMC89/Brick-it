@@ -13,7 +13,7 @@ function Arrow (canvasElement) {
 
 Arrow.prototype.moveArrow = function (angleVariation) {
   
-  this.angle += (angleVariation)*5;
+  this.angle += angleVariation*5;
   
 }
 
