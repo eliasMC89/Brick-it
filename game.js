@@ -91,6 +91,7 @@ Game.prototype.checkAllCollisions = function () {
       this.lives--;
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
+      this.arrow = new Arrow (this.canvasElement);
     } else{
       this.gameIsOver = true;
       this.endGame();
@@ -104,12 +105,14 @@ Game.prototype.checkAllCollisions = function () {
     this.brick.setSpeed(2);
     this.brick.setLength(-10);
     this.bullet = new Bullet (this.canvasElement);
+    this.arrow = new Arrow (this.canvasElement);
 
   }else if (this.bullet.checkCollisionWithEnemy(this.enemy)){
     if (this.lives > 1){
       this.lives--;
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
+      this.arrow = new Arrow (this.canvasElement);
     } else{
       this.gameIsOver = true;
       this.endGame();
@@ -118,6 +121,7 @@ Game.prototype.checkAllCollisions = function () {
       this.lives++;
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
+      this.arrow = new Arrow (this.canvasElement);
   }
   
 }
