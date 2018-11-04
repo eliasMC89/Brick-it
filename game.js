@@ -28,14 +28,23 @@ Game.prototype.startLoop = function () {
   this.extraLife = new ExtraLife (this.canvasElement);
   this.arrow = new Arrow (this.canvasElement);
 
-  this.handleKeyDown = function(event) {
+  this.shootBullet = function(event) {
     if (event.key === ' ') {
-      this.bullet.setDirection(1);
+      this.bullet.startMovement(1);
     } 
     
-  }.bind(this)
+  }.bind(this);
 
-  document.addEventListener ('keydown', this.handleKeyDown);
+  this.changeArrowDirection = function (event) {
+    if (event.key === 's'){
+      this.arrow.moveArrow(1);
+    } else if (event.key === 'w'){
+      this.arrow.moveArrow(-1);
+    }
+  }.bind(this);
+
+  document.addEventListener ('keydown', this.shootBullet);
+  document.addEventListener ('keyup', this.changeArrowDirection);
   
   var loop = function () {
     

@@ -4,18 +4,20 @@ function Bullet (canvasElement) {
   this.x = 5;
   this.y = canvasElement.height / 2;
   this.size = 5;
-  this.speedX = 20;
-  this.speedY = 0;
-  this.direction = 0;
+  this.speed = {
+    x: 20,
+    y: 0
+  }
+  this.startMove = 0;
   this.canvasElement = canvasElement;
   this.ctx = this.canvasElement.getContext('2d');
 }
 
 Bullet.prototype.update = function () {
 
-  this.x += this.speedX * this.direction;
+  this.x += this.speed.x * this.startMove;
 
-  this.y += this.speedY * this.direction;
+  this.y += this.speed.y * this.startMove;
 
 }
 
@@ -27,9 +29,14 @@ Bullet.prototype.draw = function () {
 
 }
 
-Bullet.prototype.setDirection = function (newDirection) {
-  this.direction = newDirection;
+Bullet.prototype.startMovement = function (move) {
+  this.startMove = move;
 }
+
+Bullet.prototype.setSpeedDirection = function () {
+  
+}
+
 
 Bullet.prototype.checkCollisionWithMiss = function () {
 
