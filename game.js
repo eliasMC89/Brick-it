@@ -71,7 +71,7 @@ Game.prototype.updateAll = function (event) {
   if (this.level > 1){
     this.enemy.update();
   }
-  if (this.level > 2 && isOdd(this.level)){
+  if (this.level > 2 && isOdd(this.level) && this.extraLife){
     this.extraLife.update();
   }
 }
@@ -88,7 +88,7 @@ Game.prototype.drawAll = function () {
   if (this.level > 1){
     this.enemy.draw();
   }
-  if (this.level > 2 && isOdd(this.level)){
+  if (this.level > 2 && isOdd(this.level) && this.extraLife){
     this.extraLife.draw();
   }
   this.arrow.draw();
@@ -148,12 +148,8 @@ Game.prototype.checkAllCollisions = function () {
   if (this.level > 2 && isOdd(this.level)){
     if (this.bullet.checkCollisionWithExtraLife(this.extraLife)){
       this.lives++;
-      this.tempScore = 0;
+      this.extraLife = null;
       this.updateLife();
-      this.bullet = new Bullet (this.canvasElement);
-      this.arrow = new Arrow (this.canvasElement);
-      this.extraLife = new ExtraLife (this.canvasElement);
-      this.enemy = new Enemy (this.canvasElement);
     }
   }
   

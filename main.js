@@ -66,7 +66,7 @@ function main() {
           <p class="score">Score: <span class="score-value">0</span></p>
         </section>
         <section class="game container">
-          <canvas width="750px" height="500px"></canvas>
+          <canvas width="900px" height="500px"></canvas>
         </section>  
       </main>
     `);

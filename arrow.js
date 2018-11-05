@@ -13,7 +13,9 @@ function Arrow (canvasElement) {
 
 Arrow.prototype.moveArrow = function (angleVariation) {
   
-  this.angle += angleVariation*5;
+  if (this.angle < 70 && this.angle > -70){
+    this.angle += angleVariation*5;
+  }
   
 }
 
