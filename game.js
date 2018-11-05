@@ -9,7 +9,7 @@ function Game (canvasElement, lives) {
   this.gameIsOver = false;
   this.lives = lives;
   this.score = 0;
-  //this.tempScore = 0;
+  this.tempScore = 0;
   this.level = 1;
   this.arrow = null;
 }
@@ -89,10 +89,12 @@ Game.prototype.drawAll = function () {
 Game.prototype.checkAllCollisions = function () {
   if (this.bullet.checkCollisionWithBounce()){
     this.bullet.speed.y *= -1;
+    this.tempScore += 3;
   }
   if (this.bullet.checkCollisionWithMiss()){
     if (this.lives > 1){
       this.lives--;
+      this.tempScore = 0;
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
       this.arrow = new Arrow (this.canvasElement);
@@ -101,7 +103,7 @@ Game.prototype.checkAllCollisions = function () {
       this.endGame();
     }
   }else if (this.bullet.checkCollisionWithBrick(this.brick)){
-    this.score += 10;
+    this.score += 10 + this.tempScore;
     this.level++;
     this.updateScore();
     this.addLevel();
@@ -113,6 +115,7 @@ Game.prototype.checkAllCollisions = function () {
   }else if (this.bullet.checkCollisionWithEnemy(this.enemy)){
     if (this.lives > 1){
       this.lives--;
+      this.tempScore = 0;
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
       this.arrow = new Arrow (this.canvasElement);

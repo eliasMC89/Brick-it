@@ -23,8 +23,9 @@ Arrow.prototype.draw = function () {
   this.ctx.save();
   this.ctx.translate(this.xi, this.yi);
   this.ctx.rotate(this.angle*Math.PI/180);
+  this.ctx.setLineDash([5, 15]);
   this.ctx.moveTo(0, 0);
-  this.ctx.lineTo(100, 0);
+  this.ctx.lineTo(150, 0);
   this.ctx.stroke();
   this.ctx.restore();
   
