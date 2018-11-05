@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Asap');
+
 /* ---- reset ---- */
 
 html {
@@ -12,6 +14,49 @@ body {
   padding: 0;
 }
 
+
+/* ---- typography ---- */
+
+body {
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Bungee Inline';
+  font-size: 80px;
+}
+
+h2 {}
+
+h3 {}
+
+p {
+  margin: 0;
+}
+
+
+
+
+/* ---- layout ---- */
+
+.container {
+  margin: 0 20px;
+}
+
+section {
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 728px;
+    margin: 0 auto;
+  }
+}
+
+/* ---- components ---- */
+
 canvas {
   border: 1px solid black;
   padding-left: 0;
@@ -19,5 +64,58 @@ canvas {
   margin-left: auto;
   margin-right: auto;
   display: block;
-  /* margin-top: 10%; */
+}
+
+.button {
+  width: 350px;
+  height: 100px;
+  border-radius: 100px 100px 100px 100px;
+  font-family: 'Asap';
+  font-size: 30px;
+  color: #CECECE;
+}
+
+
+/* ---- section ---- */
+
+section.header {
+  margin-bottom: 120px;
+}
+
+.title {
+}
+
+section.buttons {
+  padding-top: 30px;
+}
+
+.play {
+  margin-bottom: 30px;
+}
+
+.other-options {
+  padding-top: 20px;
+}
+
+.play .button {
+  background-color: #750000;
+}
+
+.other-options .button {
+  margin: 0 20px;
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  background-color: #254C68;
+}
+
+section.info {
+  text-align: left;
+  font-family: 'Asap';
+  font-size: 20px;
+  padding-left: 30px;
+}
+
+.info p {
+  padding: 5px 0px;
 }

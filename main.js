@@ -25,10 +25,18 @@ function main() {
   function buildSplash() {
     splashScreen = buildDOM(`
       <main>
-        <h1>Brick it</h1>
-        <button class="play">Play</button>
-        <button class="instructions">How to Play</button>
-        <button class="high-scores">High Scores</button>
+        <section class="header container">
+          <h1 class="title">Brick it</h1>
+        </section>
+        <section class="buttons container">
+          <div class="play">
+            <button class="play-btn button">Play</button>
+          </div>
+          <div class="other-options">
+            <button class="instructions-btn button">How to Play</button>
+            <button class="high-scores-btn button">High Scores</button>
+          </div>
+        </section>
       </main>
     `)
 
@@ -49,10 +57,14 @@ function main() {
   function buildGameScreen(lives) {
     gameScreen = buildDOM(`
       <main>
-        <p class="lives">Lives: <span class="lives-value"></span></p>
-        <p class="level">Level: <span class="level-value">1</span></p>
-        <p class="score">Score: <span class="score-value">0</span></p>
-        <canvas width="650px" height="500px"></canvas>  
+        <section class="info container">
+          <p class="lives">Bullets: <span class="lives-value"></span></p>
+          <p class="level">Level: <span class="level-value">1</span></p>
+          <p class="score">Score: <span class="score-value">0</span></p>
+        </section>
+        <section class="game container">
+          <canvas width="650px" height="500px"></canvas>
+        </section>  
       </main>
     `);
 
@@ -97,10 +109,18 @@ function main() {
   function buildGameOverScreen() {
     gameOverScreen = buildDOM(`
       <main>
-        <h1>Game Over</h1>
-        <button class="restart">Try Again</button>
-        <button class="backToMenu">Back to Main Menu</button>
-        <button>High Scores</button>
+        <section class="header container">
+          <h1 class="title">Game Over</h1>
+        </section>
+        <section class="buttons container">
+          <div class="play">
+            <button class="restart button">Try Again</button>
+          </div>
+          <div class="other-options">
+            <button class="backToMenu button">Back to Main Menu</button>
+            <button class="button">High Scores</button>
+          </div>
+        </section>
       </main>  
     `);
 
@@ -117,7 +137,7 @@ function main() {
   function destroyGameOverScreen(event) {
     gameOverScreen.remove();
 
-    if (event.target.className === "restart"){
+    if (event.target.className === "restart button"){
       buildGameScreen(3);
     }else{
       buildSplash();
