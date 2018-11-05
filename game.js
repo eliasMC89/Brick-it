@@ -68,7 +68,9 @@ Game.prototype.startLoop = function () {
 Game.prototype.updateAll = function (event) {
   this.bullet.update();
   this.brick.update();
-  this.enemy.update();
+  if (this.level > 1){
+    this.enemy.update();
+  }
   this.extraLife.update();
 }
 
@@ -81,7 +83,9 @@ Game.prototype.clearAll = function () {
 Game.prototype.drawAll = function () {
   this.bullet.draw();
   this.brick.draw();
-  this.enemy.draw();
+  if (this.level > 1){
+    this.enemy.draw();
+  }
   this.extraLife.draw();
   this.arrow.draw();
 }
@@ -105,6 +109,7 @@ Game.prototype.checkAllCollisions = function () {
   }else if (this.bullet.checkCollisionWithBrick(this.brick)){
     this.score += 10 + this.tempScore;
     this.level++;
+    this.tempScore = 0;
     this.updateScore();
     this.addLevel();
     this.brick.setSpeed(2);
@@ -112,22 +117,26 @@ Game.prototype.checkAllCollisions = function () {
     this.bullet = new Bullet (this.canvasElement);
     this.arrow = new Arrow (this.canvasElement);
 
-  }else if (this.bullet.checkCollisionWithEnemy(this.enemy)){
-    if (this.lives > 1){
-      this.lives--;
-      this.tempScore = 0;
-      this.updateLife();
-      this.bullet = new Bullet (this.canvasElement);
-      this.arrow = new Arrow (this.canvasElement);
-    } else{
-      this.gameIsOver = true;
-      this.endGame();
-    } 
-  } else if (this.bullet.checkCollisionWithExtraLife(this.extraLife)){
+  }
+  if (this.level > 1){
+    if (this.bullet.checkCollisionWithEnemy(this.enemy)){
+      if (this.lives > 1){
+        this.lives--;
+        this.tempScore = 0;
+        this.updateLife();
+        this.bullet = new Bullet (this.canvasElement);
+        this.arrow = new Arrow (this.canvasElement);
+      } else{
+        this.gameIsOver = true;
+        this.endGame();
+      } 
+    }
+    if (this.bullet.checkCollisionWithExtraLife(this.extraLife)){
       this.lives++;
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
       this.arrow = new Arrow (this.canvasElement);
+    }
   }
   
   

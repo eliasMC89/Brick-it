@@ -7,7 +7,7 @@ function Bullet (canvasElement) {
   this.angle = 0;
   //this.initialSpeed = 20;
   this.speed = {
-    x: 20,
+    x: 15,
     y: 0
   }
   this.startMove = 0;
@@ -40,8 +40,8 @@ Bullet.prototype.setSpeedAngle = function (angleVariation) {
 
   this.angle += 5*angleVariation;
   
-  this.speed.x = 20 * Math.cos(this.angle * Math.PI/180);
-  this.speed.y = 20 * Math.sin(this.angle * Math.PI/180);
+  this.speed.x = 15 * Math.cos(this.angle * Math.PI/180);
+  this.speed.y = 15 * Math.sin(this.angle * Math.PI/180);
 }
 
 

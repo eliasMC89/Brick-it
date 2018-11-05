@@ -1,9 +1,9 @@
 'use strict'
 
 function Brick (canvasElement) {
-  this.x = canvasElement.width - 10;
+  this.x = canvasElement.width - 25;
   this.y = 0;                              
-  this.sizeX = 10;
+  this.sizeX = 25;
   this.sizeY = 200;
   this.speed = 5;
   this.direction = 0;

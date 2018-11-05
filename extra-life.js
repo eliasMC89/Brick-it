@@ -1,7 +1,7 @@
 'use strict'
 
 function ExtraLife (canvasElement) {
-  this.x = canvasElement.width - 200;
+  this.x = (canvasElement.width-30) - (Math.floor(Math.random() * (canvasElement.width / 2)));
   this.y = 50;
   this.size = 10;
   this.speed = 4;
