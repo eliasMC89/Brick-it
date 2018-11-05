@@ -80,6 +80,7 @@ canvas {
 /* ---- section ---- */
 
 section.header {
+  padding-top: 80px;
   margin-bottom: 120px;
 }
 

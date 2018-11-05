@@ -71,7 +71,9 @@ Game.prototype.updateAll = function (event) {
   if (this.level > 1){
     this.enemy.update();
   }
-  this.extraLife.update();
+  if (this.level > 2 && isOdd(this.level)){
+    this.extraLife.update();
+  }
 }
 
 Game.prototype.clearAll = function () {
@@ -86,7 +88,9 @@ Game.prototype.drawAll = function () {
   if (this.level > 1){
     this.enemy.draw();
   }
-  this.extraLife.draw();
+  if (this.level > 2 && isOdd(this.level)){
+    this.extraLife.draw();
+  }
   this.arrow.draw();
 }
 
@@ -102,6 +106,8 @@ Game.prototype.checkAllCollisions = function () {
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
       this.arrow = new Arrow (this.canvasElement);
+      this.extraLife = new ExtraLife (this.canvasElement);
+      this.enemy = new Enemy (this.canvasElement);
     } else{
       this.gameIsOver = true;
       this.endGame();
@@ -116,7 +122,12 @@ Game.prototype.checkAllCollisions = function () {
     this.brick.setLength(-10);
     this.bullet = new Bullet (this.canvasElement);
     this.arrow = new Arrow (this.canvasElement);
-
+    this.extraLife = new ExtraLife (this.canvasElement);
+    this.enemy = new Enemy (this.canvasElement);
+    // if (this.level > 1){
+    //   this.enemy.setSpeed(0.5);
+    //   this.enemy.setSize(5);
+    // }
   }
   if (this.level > 1){
     if (this.bullet.checkCollisionWithEnemy(this.enemy)){
@@ -126,19 +137,25 @@ Game.prototype.checkAllCollisions = function () {
         this.updateLife();
         this.bullet = new Bullet (this.canvasElement);
         this.arrow = new Arrow (this.canvasElement);
+        this.extraLife = new ExtraLife (this.canvasElement);
+        this.enemy = new Enemy (this.canvasElement);
       } else{
         this.gameIsOver = true;
         this.endGame();
       } 
     }
+  }
+  if (this.level > 2 && isOdd(this.level)){
     if (this.bullet.checkCollisionWithExtraLife(this.extraLife)){
       this.lives++;
+      this.tempScore = 0;
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
       this.arrow = new Arrow (this.canvasElement);
+      this.extraLife = new ExtraLife (this.canvasElement);
+      this.enemy = new Enemy (this.canvasElement);
     }
   }
-  
   
 }
 
@@ -176,5 +193,9 @@ Game.prototype.updateScore = function () {
 
 Game.prototype.addLevel = function () {
   this.levelUpdateCallback();
+}
+
+function isOdd(num) {
+  return num % 2 == 1;
 }
 

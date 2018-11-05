@@ -63,7 +63,7 @@ function main() {
           <p class="score">Score: <span class="score-value">0</span></p>
         </section>
         <section class="game container">
-          <canvas width="650px" height="500px"></canvas>
+          <canvas width="750px" height="500px"></canvas>
         </section>  
       </main>
     `);
@@ -123,6 +123,10 @@ function main() {
         </section>
       </main>  
     `);
+    // <section class="game-over-score">
+    //   <p class="level">Level: <span class="level-value">1</span></p>
+    //   <p class="score">Final score: <span class="score-value">0</span></p>
+    // </section>
 
     document.body.prepend(gameOverScreen);
 

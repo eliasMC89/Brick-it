@@ -1,7 +1,7 @@
 'use strict'
 
 function Enemy (canvasElement) {
-  this.x = canvasElement.width - 100;
+  this.x = (canvasElement.width-canvasElement.width/4) - (Math.floor(Math.random() * (canvasElement.width / 4)));//canvasElement.width - 100;
   this.y = 100;
   this.size = 10;
   this.speed = 3;
@@ -31,13 +31,13 @@ Enemy.prototype.setDirection = function (newDirection) {
   this.direction = newDirection;
 }
 
-// Brick.prototype.setSpeed = function (speedVariation) {
-//   this.speed += speedVariation;
-// }
+Enemy.prototype.setSpeed = function (speedVariation) {
+  this.speed += speedVariation;
+}
 
-// Brick.prototype.setLength = function (lengthVariation) {
-//   this.sizeY += lengthVariation;
-// }
+Enemy.prototype.setSize = function (sizeVariation) {
+  this.size += sizeVariation;
+}
 
 Enemy.prototype.checkCollisionWithLimits = function () {
   if (this.y <= this.size) {
