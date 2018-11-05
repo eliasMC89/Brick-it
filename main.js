@@ -20,6 +20,9 @@ function main() {
   var scoreElement;
   var levelElement;
 
+  var finalLevel;
+  var finalScore;
+
   var game;
   
   function buildSplash() {
@@ -109,8 +112,12 @@ function main() {
   function buildGameOverScreen() {
     gameOverScreen = buildDOM(`
       <main>
-        <section class="header container">
+        <section id="game-over" class="header container">
           <h1 class="title">Game Over</h1>
+        </section>
+        <section class="game-over-score">
+          <p class="level">Level: <span class="level-value">1</span></p>
+          <p class="score">Final score: <span class="score-value">0</span></p>
         </section>
         <section class="buttons container">
           <div class="play">
@@ -123,12 +130,15 @@ function main() {
         </section>
       </main>  
     `);
-    // <section class="game-over-score">
-    //   <p class="level">Level: <span class="level-value">1</span></p>
-    //   <p class="score">Final score: <span class="score-value">0</span></p>
-    // </section>
+    
 
     document.body.prepend(gameOverScreen);
+
+    scoreElement = document.querySelector('span.score-value');
+    levelElement = document.querySelector('span.level-value');
+
+    game.scoreUpdateCallback(updateScore);
+    game.levelUpdateCallback(updateLevel);
 
     restartButton = document.querySelector('.restart');
     backToMenuButton = document.querySelector('.backToMenu');
