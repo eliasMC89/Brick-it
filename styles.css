@@ -26,10 +26,6 @@ h1 {
   font-size: 80px;
 }
 
-h2 {}
-
-h3 {}
-
 p {
   margin: 0;
 }
@@ -39,11 +35,6 @@ p {
 .container {
   margin: 0 20px;
 }
-
-/* section {
-  margin-bottom: 20px;
-  padding-top: 20px;
-} */
 
 @media (min-width: 768px) {
   .container {
@@ -74,7 +65,7 @@ canvas {
 }
 
 
-/* ---- section ---- */
+/* ---- sections ---- */
 
 /*--splash screen--*/
 
@@ -118,11 +109,13 @@ section.splash-header {
 .play button:hover {
   color: #EAE027;
   font-size: 40px;
+  border: 5px solid #EAE027;
 }
 
 .other-options button:hover {
   color: #EAE027;
   font-size: 22px;
+  border: 3px solid #EAE027;
 }
 
 /*---game over screen---*/
@@ -168,99 +161,3 @@ section.info {
 .info p {
   padding: 5px 0px;
 }
-
-
-/* ----- okay css but messy -----*/
-/* section.header {
-  padding-top: 80px;
-  margin-bottom: 120px;
-}
-
-.splash .title {
-  font-size: 100px;
-  padding: 40px;
-  margin: 0 auto;
-}
-
-.splash h1.title:hover {
-  background: url('./images/brickBackground.jpg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  color: #F7F7F7;
-}
-
-.game-over .header {
-  
-}
-
-.game-over {
-  margin-bottom: 0;
-}
-
-.game-over .title {
-  margin: 0 auto;
-  font-family: 'Bungee Shade';
-}
-
-section.buttons {
-  padding-top: 0;
-} */
-
-/* .splash .buttons {
-  padding-top: 0;
-  margin-top: 0;
-} */
-
-/* .play {
-  margin-bottom: 30px;
-}
-
-.other-options {
-  padding-top: 0;
-}
-
-.play .button {
-  background-color: #6B0B0B;
-}
-
-.other-options .button {
-  margin: 0 20px;
-  width: 200px;
-  height: 50px;
-  font-size: 18px;
-  background-color: #1B384C;
-}
-
-.play button:hover {
-  color: #EAE027;
-  font-size: 40px;
-}
-
-.other-options button:hover {
-  font-size: 22px;
-}
-section.info {
-  text-align: left;
-  font-family: 'Asap';
-  font-size: 20px;
-  padding-left: 30px;
-}
-
-.info p {
-  padding: 5px 0px;
-}
-
-section.game-over-score {
-  display: flex;
-  font-family: 'Asap';
-  font-size: 20px;
-  justify-content: center;
-}
-
-.game-over-score p {
-  padding: 10px 40px;
-}
-
-.game-over .buttons {
-  padding-top: 100px;
-} */
