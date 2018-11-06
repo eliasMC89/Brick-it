@@ -85,22 +85,33 @@ button:hover {
   color: yellow;
 }
 
-#splash .title {
+.splash .title {
   font-size: 100px;
+  padding: 40px;
+  margin: 0 auto;
 }
 
-#game-over {
+.splash h1.title:hover {
+  background: url('./images/brickBackground.jpg');
+}
+
+.game-over {
   margin-bottom: 0;
 }
 
-#game-over .title {
-  margin-bottom: 20px;
+.game-over .title {
+  margin: 0 auto;
   font-family: 'Bungee Shade';
 }
 
 section.buttons {
-  padding-top: 30px;
+  padding-top: 0;
 }
+
+/* .splash .buttons {
+  padding-top: 0;
+  margin-top: 0;
+} */
 
 .play {
   margin-bottom: 30px;
@@ -142,4 +153,8 @@ section.game-over-score {
 
 .game-over-score p {
   padding: 10px 40px;
+}
+
+.game-over .buttons {
+  padding-top: 100px;
 }

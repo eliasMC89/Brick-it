@@ -29,10 +29,10 @@ function main() {
   function buildSplash() {
     splashScreen = buildDOM(`
       <main>
-        <section id="splash" class="header container">
+        <section class="splash header container">
           <h1 class="title">Brick it</h1>
         </section>
-        <section class="buttons container">
+        <section class="splash buttons container">
           <div class="play">
             <button class="play-btn button">Play</button>
           </div>
@@ -121,14 +121,14 @@ function main() {
   function buildGameOverScreen() {
     gameOverScreen = buildDOM(`
       <main>
-        <section id="game-over" class="header container">
+        <section class="game-over header container">
           <h1 class="title">Game Over</h1>
         </section>
-        <section class="game-over-score">
+        <section class="game-over game-over-score">
           <p class="level">Level: <span class="level-value">1</span></p>
           <p class="score">Final score: <span class="score-value">0</span></p>
         </section>
-        <section class="buttons container">
+        <section class="game-over buttons container">
           <div class="play">
             <button class="restart button">Try Again</button>
           </div>
