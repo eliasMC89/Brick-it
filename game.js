@@ -118,7 +118,7 @@ Game.prototype.checkAllCollisions = function () {
     this.tempScore = 0;
     this.updateScore();
     this.addLevel();
-    this.brick.setSpeed(2);
+    this.brick.setSpeed(1);
     this.brick.setLength(-10);
     this.bullet = new Bullet (this.canvasElement);
     this.arrow = new Arrow (this.canvasElement);

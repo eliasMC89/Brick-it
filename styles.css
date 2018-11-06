@@ -156,8 +156,19 @@ section.info {
   font-weight: 700;
   font-size: 20px;
   padding-left: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .info p {
   padding: 5px 0px;
+}
+
+.shoot-info p {
+  font-size: 30px;
+  color: #423B3B;
+}
+
+.shoot-info span {
+  color: #6B0B0B;
 }

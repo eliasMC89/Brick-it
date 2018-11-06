@@ -3,7 +3,7 @@
 function Enemy (canvasElement) {
   this.x = (canvasElement.width-canvasElement.width/4) - (Math.floor(Math.random() * (canvasElement.width / 4)));//canvasElement.width - 100;
   this.y = 100;
-  this.size = 10;
+  this.size = 15;
   this.speed = 3;
   this.direction = 1;
   this.canvasElement = canvasElement;
@@ -25,8 +25,6 @@ Enemy.prototype.draw = function () {
   this.ctx.beginPath();
   this.ctx.arc(this.x,this.y,this.size,0,Math.PI*2,true);
   this.ctx.drawImage(this.image, this.x-this.size, this.y-this.size, this.size*2, this.size*2);
-  //this.ctx.fillStyle = 'red';
-  //this.ctx.fill();
 
 
 }

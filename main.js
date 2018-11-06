@@ -47,16 +47,9 @@ function main() {
     document.body.prepend(splashScreen);
 
     startButton = document.querySelector('.play');
-    // buttons = document.querySelector('.buttons');
 
     startButton.addEventListener('click', destroySplash);
-    // buttons.addEventListener('mouseover', function(event) {
-    //   event.target.style.color = "yellow";
 
-    //   setTimeout(function() {
-    //     event.target.style.color = '#CECECE';
-    //   }, 500);
-    // });
   }
 
   function destroySplash() {
@@ -70,9 +63,15 @@ function main() {
     gameScreen = buildDOM(`
       <main>
         <section class="info container">
-          <p class="lives">Bullets: <span class="lives-value"></span></p>
-          <p class="level">Level: <span class="level-value">1</span></p>
-          <p class="score">Score: <span class="score-value">0</span></p>
+          <div class="player-info">
+            <p class="lives">Bullets: <span class="lives-value"></span></p>
+            <p class="level">Level: <span class="level-value">1</span></p>
+            <p class="score">Score: <span class="score-value">0</span></p>
+          </div>
+          <div class="shoot-info">
+            <p>PRESS <span>"SPACE"</span> TO SHOOT</p>
+            <p><span>"w"</span> AND <span>"s"</span> TO AIM</p>
+          </div>
         </section>
         <section class="game container">
           <canvas width="800px" height="500px"></canvas>
@@ -159,6 +158,10 @@ function main() {
 
   function destroyGameOverScreen(event) {
     gameOverScreen.remove();
+    restartButton.removeEventListener('click', destroyGameOverScreen);
+    backToMenuButton.removeEventListener('click', destroyGameOverScreen);
+
+
 
     if (event.target.className === "restart button"){
       buildGameScreen(3);

@@ -3,7 +3,7 @@
 function ExtraLife (canvasElement) {
   this.x = (canvasElement.width-canvasElement.width/2) - (Math.floor(Math.random() * (canvasElement.width / 4)));
   this.y = 50;
-  this.size = 10;
+  this.size = 15;
   this.speed = 4;
   this.direction = 1;
   this.canvasElement = canvasElement;
