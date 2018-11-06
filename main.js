@@ -15,6 +15,7 @@ function main() {
   var startButton;
   var restartButton;
   var backToMenuButton;
+  //var buttons;
 
   var livesElement;
   var scoreElement;
@@ -28,7 +29,7 @@ function main() {
   function buildSplash() {
     splashScreen = buildDOM(`
       <main>
-        <section class="header container">
+        <section id="splash" class="header container">
           <h1 class="title">Brick it</h1>
         </section>
         <section class="buttons container">
@@ -46,8 +47,16 @@ function main() {
     document.body.prepend(splashScreen);
 
     startButton = document.querySelector('.play');
+    // buttons = document.querySelector('.buttons');
 
     startButton.addEventListener('click', destroySplash);
+    // buttons.addEventListener('mouseover', function(event) {
+    //   event.target.style.color = "yellow";
+
+    //   setTimeout(function() {
+    //     event.target.style.color = '#CECECE';
+    //   }, 500);
+    // });
   }
 
   function destroySplash() {
@@ -66,7 +75,7 @@ function main() {
           <p class="score">Score: <span class="score-value">0</span></p>
         </section>
         <section class="game container">
-          <canvas width="900px" height="500px"></canvas>
+          <canvas width="800px" height="500px"></canvas>
         </section>  
       </main>
     `);

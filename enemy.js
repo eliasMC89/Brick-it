@@ -8,6 +8,8 @@ function Enemy (canvasElement) {
   this.direction = 1;
   this.canvasElement = canvasElement;
   this.ctx = this.canvasElement.getContext('2d');
+  this.image = new Image();
+  this.image.src = './images/modern-15-skull.svg.png';
 }
 
 Enemy.prototype.update = function () {
@@ -22,8 +24,10 @@ Enemy.prototype.draw = function () {
 
   this.ctx.beginPath();
   this.ctx.arc(this.x,this.y,this.size,0,Math.PI*2,true);
-  this.ctx.fillStyle = 'red';
-  this.ctx.fill();
+  this.ctx.drawImage(this.image, this.x-this.size, this.y-this.size, this.size*2, this.size*2);
+  //this.ctx.fillStyle = 'red';
+  //this.ctx.fill();
+
 
 }
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Asap');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Asap|Bungee+Shade');
 
 /* ---- reset ---- */
 
@@ -55,8 +55,8 @@ section {
 /* ---- components ---- */
 
 canvas {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
@@ -81,7 +81,11 @@ section.header {
   margin-bottom: 120px;
 }
 
-.header .title {
+button:hover {
+  color: yellow;
+}
+
+#splash .title {
   font-size: 100px;
 }
 
@@ -91,6 +95,7 @@ section.header {
 
 #game-over .title {
   margin-bottom: 20px;
+  font-family: 'Bungee Shade';
 }
 
 section.buttons {
