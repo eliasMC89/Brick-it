@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Asap|Bungee+Shade');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Inline|Asap|Bungee+Shade|Source+Code+Pro:700');
 
 /* ---- reset ---- */
 
@@ -40,10 +40,10 @@ p {
   margin: 0 20px;
 }
 
-section {
+/* section {
   margin-bottom: 20px;
   padding-top: 20px;
-}
+} */
 
 @media (min-width: 768px) {
   .container {
@@ -55,8 +55,8 @@ section {
 /* ---- components ---- */
 
 canvas {
-  border-top: 10px solid black;
-  border-bottom: 10px solid black;
+  border-top: 10px solid #606060;
+  border-bottom: 10px solid #606060;
   padding-left: 0;
   padding-right: 0;
   margin-left: auto;
@@ -76,13 +76,104 @@ canvas {
 
 /* ---- section ---- */
 
-section.header {
-  padding-top: 80px;
-  margin-bottom: 120px;
+/*--splash screen--*/
+
+section.splash-header {
+  padding-top: 50px;
+  margin-bottom: 50px;
 }
 
-button:hover {
-  color: yellow;
+.splash-header .title {
+  font-size: 100px;
+  padding: 40px;
+}
+
+.splash-header h1.title:hover {
+  background: url('./images/brickBackground.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: #F7F7F7;
+}
+
+.play {
+  margin-bottom: 20px;
+}
+
+.play-btn {
+  background-color: #6B0B0B;
+}
+
+.other-options {
+  padding-top: 20px;
+}
+
+.other-options .button {
+  margin: 0 20px;
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  background-color: #1B384C;
+}
+
+.play button:hover {
+  color: #EAE027;
+  font-size: 40px;
+}
+
+.other-options button:hover {
+  color: #EAE027;
+  font-size: 22px;
+}
+
+/*---game over screen---*/
+
+.game-over-header .title {
+  font-size: 100px;
+  font-family: 'Bungee Shade';
+}
+
+.restart {
+  background-color: #6B0B0B;
+}
+
+section.game-over-score {
+  display: flex;
+  font-family: 'Source Code Pro';
+  font-weight: 700;
+  font-size: 30px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.game-over-score p {
+  padding: 10px 40px;
+}
+
+.game-over-buttons {
+  padding-top: 20px;
+}
+
+/*---game screen---*/
+
+section.info {
+  padding-top: 30px;
+  margin-bottom: 30px;
+  text-align: left;
+  font-family: 'Source Code Pro';
+  font-weight: 700;
+  font-size: 20px;
+  padding-left: 30px;
+}
+
+.info p {
+  padding: 5px 0px;
+}
+
+
+/* ----- okay css but messy -----*/
+/* section.header {
+  padding-top: 80px;
+  margin-bottom: 120px;
 }
 
 .splash .title {
@@ -93,6 +184,13 @@ button:hover {
 
 .splash h1.title:hover {
   background: url('./images/brickBackground.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: #F7F7F7;
+}
+
+.game-over .header {
+  
 }
 
 .game-over {
@@ -106,14 +204,14 @@ button:hover {
 
 section.buttons {
   padding-top: 0;
-}
+} */
 
 /* .splash .buttons {
   padding-top: 0;
   margin-top: 0;
 } */
 
-.play {
+/* .play {
   margin-bottom: 30px;
 }
 
@@ -133,6 +231,14 @@ section.buttons {
   background-color: #1B384C;
 }
 
+.play button:hover {
+  color: #EAE027;
+  font-size: 40px;
+}
+
+.other-options button:hover {
+  font-size: 22px;
+}
 section.info {
   text-align: left;
   font-family: 'Asap';
@@ -157,4 +263,4 @@ section.game-over-score {
 
 .game-over .buttons {
   padding-top: 100px;
-}
+} */
