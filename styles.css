@@ -81,7 +81,8 @@ section.header {
   margin-bottom: 120px;
 }
 
-.title {
+.header .title {
+  font-size: 100px;
 }
 
 #game-over {
@@ -101,11 +102,11 @@ section.buttons {
 }
 
 .other-options {
-  padding-top: 20px;
+  padding-top: 0;
 }
 
 .play .button {
-  background-color: #750000;
+  background-color: #6B0B0B;
 }
 
 .other-options .button {
@@ -113,7 +114,7 @@ section.buttons {
   width: 200px;
   height: 50px;
   font-size: 18px;
-  background-color: #254C68;
+  background-color: #1B384C;
 }
 
 section.info {

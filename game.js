@@ -71,7 +71,7 @@ Game.prototype.updateAll = function (event) {
   if (this.level > 1){
     this.enemy.update();
   }
-  if (this.level > 2 && isOdd(this.level) && this.extraLife){
+  if (this.level > 2 && this.isOdd(this.level) && this.extraLife && !(this.lives > 3)){
     this.extraLife.update();
   }
 }
@@ -88,7 +88,7 @@ Game.prototype.drawAll = function () {
   if (this.level > 1){
     this.enemy.draw();
   }
-  if (this.level > 2 && isOdd(this.level) && this.extraLife){
+  if (this.level > 2 && this.isOdd(this.level) && this.extraLife && !(this.lives > 3)){
     this.extraLife.draw();
   }
   this.arrow.draw();
@@ -145,7 +145,7 @@ Game.prototype.checkAllCollisions = function () {
       } 
     }
   }
-  if (this.level > 2 && isOdd(this.level)){
+  if (this.level > 2 && this.isOdd(this.level) && this.extraLife && !(this.lives > 3)){
     if (this.bullet.checkCollisionWithExtraLife(this.extraLife)){
       this.lives++;
       this.extraLife = null;
@@ -191,7 +191,7 @@ Game.prototype.addLevel = function () {
   this.levelUpdateCallback();
 }
 
-function isOdd(num) {
+Game.prototype.isOdd = function (num) {
   return num % 2 == 1;
 }
 
