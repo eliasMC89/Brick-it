@@ -11,6 +11,7 @@ function main() {
   var splashScreen;
   var gameScreen;
   var gameOverScreen;
+  var howToPlayScreen;
 
   var startButton;
   var restartButton;
@@ -169,6 +170,12 @@ function main() {
       buildSplash();
     }
   }
+
+  // function buildHowToPlayScreen() {
+  //   howToPlayScreen = buildDOM (``);
+
+
+  // }
 
   buildSplash();
 
