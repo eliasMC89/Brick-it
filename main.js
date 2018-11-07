@@ -14,6 +14,7 @@ function main() {
   var howToPlayScreen;
 
   var startButton;
+  var howToButton;
   var restartButton;
   var backToMenuButton;
   //var buttons;
@@ -47,17 +48,24 @@ function main() {
 
     document.body.prepend(splashScreen);
 
-    startButton = document.querySelector('.play');
+    startButton = document.querySelector('.play-btn');
+    howToButton = document.querySelector('.instructions-btn');
 
     startButton.addEventListener('click', destroySplash);
+    howToButton.addEventListener('click', destroySplash);
 
   }
 
   function destroySplash() {
     splashScreen.remove();
     startButton.removeEventListener('click', destroySplash);
+    howToButton.removeEventListener('click', destroySplash);
 
-    buildGameScreen(3);
+    if (event.target.className === "play-btn button"){
+      buildGameScreen(3);
+    }else if (event.target.className === "instructions-btn button") {
+      buildHowToPlayScreen();
+    }
   }
 
   function buildGameScreen(lives) {
@@ -171,11 +179,46 @@ function main() {
     }
   }
 
-  // function buildHowToPlayScreen() {
-  //   howToPlayScreen = buildDOM (``);
+  function buildHowToPlayScreen() {
+    howToPlayScreen = buildDOM (`
+      <main>
+        <section class="instructions instructions-header container">
+          <h1 class="instructions-title">How to Play</h1>
+        </section>
+        <section class="instructions instructions-body container">
+          <ul class="instructions-points">
+            <li>Press <span>"SPACE"</span> to shoot the bullet</li>
+            <li>Press <span>"w"</span> and <span>"s"</span> to aim the shot</li>
+            <li>Breaking the brick gives you <span>10 points</span></li>
+            <li>Every bounce made before breaking a brick gives you <span>3 points</span></li>
+            <li>Avoid this enemies <img src="" alt=""></li>
+            <li>Try to catch this extra bullets <img src="" alt=""></li>
+            <li>Try to make the maximum points before running out of ammunition!</li>
+          </ul>
+        </section>
+        <section class="howto-back">
+          <button class="back-btn button">Back</button>
+        </section>
+      </main>`);
+
+    document.body.prepend(howToPlayScreen);
+
+    backToMenuButton = document.querySelector('.back-btn');
+
+    backToMenuButton.addEventListener('click', destroyHowToPlayScreen);
 
 
-  // }
+
+
+  }
+
+  function destroyHowToPlayScreen () {
+    howToPlayScreen.remove();
+
+    backToMenuButton.removeEventListener('click', destroyHowToPlayScreen);
+
+    buildSplash();
+  }
 
   buildSplash();
 
