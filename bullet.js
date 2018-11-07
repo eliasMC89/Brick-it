@@ -87,6 +87,12 @@ Bullet.prototype.checkCollisionWithEnemy = function (enemy) {
 
 }
 
+Bullet.prototype.checkCollisionWithEnemy2 = function (enemy2) {
+ 
+  return (Math.sqrt((enemy2.x-this.x)*(enemy2.x-this.x)+(enemy2.y-this.y)*(enemy2.y-this.y))<(this.size+enemy2.size));
+
+}
+
 Bullet.prototype.checkCollisionWithExtraLife = function (extraLife) {
  
   return (Math.sqrt((extraLife.x-this.x)*(extraLife.x-this.x)+(extraLife.y-this.y)*(extraLife.y-this.y))<(this.size+extraLife.size));

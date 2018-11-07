@@ -3,7 +3,7 @@
 function WallBottom (canvasElement) {
   this.sizeX = 25;
   this.sizeY = canvasElement.height/2 + 10;
-  this.x = canvasElement.width / 2;
+  this.x = canvasElement.width / 2 - 65;
   this.y = canvasElement.height - this.sizeY;                              
   this.canvasElement = canvasElement;
   this.ctx = this.canvasElement.getContext('2d');

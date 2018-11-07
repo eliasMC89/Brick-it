@@ -1,7 +1,7 @@
 'use strict'
 
-function Enemy (canvasElement) {
-  this.x = (462) + (Math.random()*(156));//canvasElement.width - 100;
+function Enemy2 (canvasElement) {
+  this.x = this.x = (618) + (Math.random()*(156)); //canvasElement.width - 100;
   this.y = 100;
   this.size = 15;
   this.speed = 3;
@@ -12,7 +12,7 @@ function Enemy (canvasElement) {
   this.image.src = './images/modern-15-skull.svg.png';
 }
 
-Enemy.prototype.update = function () {
+Enemy2.prototype.update = function () {
 
   this.checkCollisionWithLimits();
   
@@ -20,7 +20,7 @@ Enemy.prototype.update = function () {
 
 }
 
-Enemy.prototype.draw = function () {
+Enemy2.prototype.draw = function () {
 
   this.ctx.beginPath();
   this.ctx.arc(this.x,this.y,this.size,0,Math.PI*2,true);
@@ -29,19 +29,11 @@ Enemy.prototype.draw = function () {
 
 }
 
-Enemy.prototype.setDirection = function (newDirection) {
+Enemy2.prototype.setDirection = function (newDirection) {
   this.direction = newDirection;
 }
 
-// Enemy.prototype.setSpeed = function (speedVariation) {
-//   this.speed += speedVariation;
-// }
-
-// Enemy.prototype.setSize = function (sizeVariation) {
-//   this.size += sizeVariation;
-// }
-
-Enemy.prototype.checkCollisionWithLimits = function () {
+Enemy2.prototype.checkCollisionWithLimits = function () {
   if (this.y <= this.size) {
     this.setDirection(1);
   }
