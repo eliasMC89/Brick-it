@@ -105,3 +105,37 @@ Bullet.prototype.checkCollisionWithBounce = function () {
   }
 }
 
+Bullet.prototype.checkCollisionWithWallBottom = function (wallBottom) {
+
+  var distX = Math.abs(this.x - wallBottom.x-wallBottom.sizeX/2);
+  var distY = Math.abs(this.y - wallBottom.y-wallBottom.sizeY/2);
+
+  if (distX > (wallBottom.sizeX/2 + this.size)) { return false; }
+  if (distY > (wallBottom.sizeY/2 + this.size)) { return false; }
+
+  if (distX <= (wallBottom.sizeX/2)) { return true; } 
+  if (distY <= (wallBottom.sizeY/2)) { return true; }
+
+  var dx=distX-wallBottom.sizeX/2;
+  var dy=distY-wallBottom.sizeY/2;
+  return (dx*dx+dy*dy<=(this.size*this.size));
+
+}
+
+Bullet.prototype.checkCollisionWithWallTop = function (wallTop) {
+
+  var distX = Math.abs(this.x - wallTop.x-wallTop.sizeX/2);
+  var distY = Math.abs(this.y - wallTop.y-wallTop.sizeY/2);
+
+  if (distX > (wallTop.sizeX/2 + this.size)) { return false; }
+  if (distY > (wallTop.sizeY/2 + this.size)) { return false; }
+
+  if (distX <= (wallTop.sizeX/2)) { return true; } 
+  if (distY <= (wallTop.sizeY/2)) { return true; }
+
+  var dx=distX-wallTop.sizeX/2;
+  var dy=distY-wallTop.sizeY/2;
+  return (dx*dx+dy*dy<=(this.size*this.size));
+
+}
+

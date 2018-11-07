@@ -181,7 +181,7 @@ function main() {
 
   function buildHowToPlayScreen() {
     howToPlayScreen = buildDOM (`
-      <main>
+      <main class="instructions-main">
         <section class="instructions instructions-header container">
           <h1 class="instructions-title">How to Play</h1>
         </section>

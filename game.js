@@ -12,6 +12,8 @@ function Game (canvasElement, lives) {
   this.tempScore = 0;
   this.level = 1;
   this.arrow = null;
+  this.wallBottom = null;
+  this.wallTop = null;
 }
 
 Game.prototype.play = function() {
@@ -28,6 +30,8 @@ Game.prototype.startLoop = function () {
   this.enemy = new Enemy (this.canvasElement);
   this.extraLife = new ExtraLife (this.canvasElement);
   this.arrow = new Arrow (this.canvasElement);
+  this.wallBottom = new WallBottom (this.canvasElement);
+  this.wallTop = new WallTop (this.canvasElement);
 
   this.shootBullet = function(event) {
     if (event.key === ' ') {
@@ -85,6 +89,8 @@ Game.prototype.clearAll = function () {
 Game.prototype.drawAll = function () {
   this.bullet.draw();
   this.brick.draw();
+  this.wallBottom.draw();
+  this.wallTop.draw();
   if (this.level > 1){
     this.enemy.draw();
   }
@@ -152,6 +158,35 @@ Game.prototype.checkAllCollisions = function () {
       this.updateLife();
     }
   }
+  if (this.bullet.checkCollisionWithWallBottom(this.wallBottom)){
+    if (this.lives > 1){
+      this.lives--;
+      this.tempScore = 0;
+      this.updateLife();
+      this.bullet = new Bullet (this.canvasElement);
+      this.arrow = new Arrow (this.canvasElement);
+      this.extraLife = new ExtraLife (this.canvasElement);
+      this.enemy = new Enemy (this.canvasElement);
+    } else{
+      this.gameIsOver = true;
+      this.endGame();
+    }
+  }
+  if (this.bullet.checkCollisionWithWallTop(this.wallTop)){
+    if (this.lives > 1){
+      this.lives--;
+      this.tempScore = 0;
+      this.updateLife();
+      this.bullet = new Bullet (this.canvasElement);
+      this.arrow = new Arrow (this.canvasElement);
+      this.extraLife = new ExtraLife (this.canvasElement);
+      this.enemy = new Enemy (this.canvasElement);
+    } else{
+      this.gameIsOver = true;
+      this.endGame();
+    }
+  }
+  
   
 }
 

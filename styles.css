@@ -176,7 +176,13 @@ section.info {
 
 /*--- how to play screen ---*/
 
-
+.instructions-main {
+  background-color: #D8D8D8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
 
 .instructions {
   background-color: #F4F4F4;
@@ -184,15 +190,14 @@ section.info {
 
 section.instructions-header {
   border: 5px solid #1B384C;
-  border-radius: 10px;
-  margin-top: 50px;
+  border-radius: 30px;
+  width: 40%;
 }
 
 .instructions-title {
   font-family: 'Source Code Pro';
   font-size: 50px;
   font-weight: 700;
-  text-align: left;
   padding-left: 20px;
 }
 
@@ -201,7 +206,6 @@ section.instructions-body {
   border-radius: 10px;
   font-size: 20px;
   color: #423B3B;
-  margin-bottom: 10px;
 }
 
 .instructions-points {
