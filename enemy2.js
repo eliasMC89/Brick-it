@@ -2,7 +2,7 @@
 
 function Enemy2 (canvasElement) {
   this.x = this.x = (618) + (Math.random()*(156)); //canvasElement.width - 100;
-  this.y = 100;
+  this.y = 350;
   this.size = 15;
   this.speed = 3;
   this.direction = 1;
