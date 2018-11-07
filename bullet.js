@@ -41,9 +41,13 @@ Bullet.prototype.startMovement = function (move) {
 }
 
 Bullet.prototype.setSpeedAngle = function (angleVariation) {
-
+  
   if (this.angle < 70 && this.angle > -70){
-    this.angle += 5*angleVariation;
+    this.angle += angleVariation*5;
+  } else if (this.angle === -70 && angleVariation > 0){
+    this.angle += angleVariation*5;
+  } else if (this.angle === 70 && angleVariation < 0){
+    this.angle += angleVariation*5;
   }
   
   this.speed.x = 15 * Math.cos(this.angle * Math.PI/180);
