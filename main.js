@@ -59,7 +59,6 @@ function main() {
           </div>
           <div class="other-options">
             <button class="instructions-btn button">How to Play</button>
-            <button class="high-scores-btn button">High Scores</button>
           </div>
         </section>
       </main>
@@ -162,7 +161,6 @@ function main() {
           </div>
           <div class="other-options">
             <button class="backToMenu button">Back to Menu</button>
-            <button class="button">High Scores</button>
           </div>
         </section>
       </main>  
@@ -198,9 +196,9 @@ function main() {
 
     if (event.target.className === "restart button"){
       buildGameScreen(3);
-    }else{
+    }else if (event.target.className === "backToMenu button") {
       buildSplash();
-    }
+    } 
   }
 
   function buildHowToPlayScreen() {
@@ -221,7 +219,7 @@ function main() {
           </ul>
         </section>
         <section class="howto-back">
-          <button class="back-btn button">Back</button>
+          <button class="back-btn button">Back to Menu</button>
         </section>
       </main>`);
 
@@ -230,9 +228,6 @@ function main() {
     backToMenuButton = document.querySelector('.back-btn');
 
     backToMenuButton.addEventListener('click', destroyHowToPlayScreen);
-
-
-
 
   }
 
@@ -244,6 +239,41 @@ function main() {
 
     buildSplash();
   }
+
+  // High scores
+
+  // function buildHighScoresScreen () {
+  //   highScoresScreen = buildDOM (`
+  //     <main class="instructions-main">
+  //       <section class="instructions instructions-header container">
+  //         <h1 class="instructions-title">High Scores</h1>
+  //       </section>
+  //       <section class="instructions instructions-body container">
+  //         <ol class="instructions-points">
+  //         </ol>
+  //       </section>
+  //       <section class="howto-back">
+  //         <button class="back-btn button">Back to Menu</button>
+  //       </section>
+  //     </main>`);
+
+  //     // read high scores from ls
+  //     // append list with highScores to highScoresScreen
+
+  //     document.body.prepend(highScoresScreen);
+
+  //     backToMenuButton = document.querySelector('.back-btn');
+
+  //     backToMenuButton.addEventListener('click', destroyHighScoresScreen);
+  // }
+
+  // function destroyHighScoresScreen (){
+  //   buttonClick();
+  //   highScoresScreen.remove();
+  //   backToMenuButton.removeEventListener('click', destroyHighScoresScreen);
+  //   buildSplash();
+
+  // }
 
   buildSplash();
 
