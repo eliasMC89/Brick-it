@@ -49,7 +49,7 @@ function main() {
   
   function buildSplash() {
     splashScreen = buildDOM(`
-      <main>
+      <main class="splash-main">
         <section class="splash-header container">
           <h1 class="title">Brick it</h1>
         </section>
@@ -89,7 +89,7 @@ function main() {
 
   function buildGameScreen(lives) {
     gameScreen = buildDOM(`
-      <main>
+      <main class="game-main">
         <section class="info container">
           <div class="player-info">
             <p class="lives">Bullets: <span class="lives-value"></span></p>

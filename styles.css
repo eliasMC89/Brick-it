@@ -54,6 +54,8 @@ canvas {
   margin-right: auto;
   display: block;
   max-width: 100%;
+  /* background-image: url('./images/background_wood_gallery.jpg'); */
+  background-size: 100%;
 }
 
 .button {
@@ -80,7 +82,7 @@ section.splash-header {
 }
 
 .splash-header .title {
-  font-size: 130px;
+  font-size: 110px;
   padding: 40px;
 }
 
@@ -152,6 +154,8 @@ section.game-over-score {
 }
 
 /*---game screen---*/
+
+
 
 section.info {
   padding-top: 30px;

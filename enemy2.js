@@ -1,7 +1,7 @@
 'use strict'
 
 function Enemy2 (canvasElement) {
-  this.x = this.x = (618) + (Math.random()*(156)); //canvasElement.width - 100;
+  this.x = this.x = (625) + (Math.random()*(156)); //canvasElement.width - 100;
   this.y = 350;
   this.size = 15;
   this.speed = 3;
