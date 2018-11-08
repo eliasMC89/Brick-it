@@ -11,6 +11,8 @@ function Brick (canvasElement) {
   this.ctx = this.canvasElement.getContext('2d');
   this.image = new Image();
   this.image.src = './images/brickBackground.jpg';
+  this.brickLimitSound = document.createElement('audio');
+  this.brickLimitSound.src = './sounds/brickLimit.mp3';
 }
 
 Brick.prototype.update = function () {
@@ -42,9 +44,11 @@ Brick.prototype.setLength = function (lengthVariation) {
 
 Brick.prototype.checkCollisionWithLimits = function () {
   if (this.y <= 0) {
+    this.brickLimitSound.play();
     this.setDirection(1);
   }
   if (this.y >= this.canvasElement.height - this.sizeY) {
+    this.brickLimitSound.play();
     this.setDirection(-1);
   }
 }

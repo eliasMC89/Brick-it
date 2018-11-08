@@ -9,6 +9,7 @@ function WallBottom (canvasElement) {
   this.ctx = this.canvasElement.getContext('2d');
   this.image = new Image();
   this.image.src = './images/muroMetal.jpg';
+  
 }
 
 WallBottom.prototype.draw = function () {

@@ -15,6 +15,24 @@ function Game (canvasElement, lives) {
   this.arrow = null;
   this.wallBottom = null;
   this.wallTop = null;
+  this.wallSound = document.createElement('audio');
+  this.gunShotSound = document.createElement('audio');
+  this.gunReloadSound = document.createElement('audio');
+  this.missSound = document.createElement('audio');
+  this.enemySound = document.createElement('audio');
+  this.bulletBounce = document.createElement('audio');
+  this.brickSound = document.createElement('audio');
+  this.extraLifeSound = document.createElement('audio');
+  this.arrowSound = document.createElement('audio');
+  this.wallSound.src = './sounds/metal-sound.mp3';
+  this.gunShotSound.src = './sounds/smb_fireworks.wav';
+  this.gunReloadSound.src = './sounds/gunReload2.mp3';
+  this.missSound.src = './sounds/miss1MOD.mp3';
+  this.enemySound.src = './sounds/enemy1.mp3';
+  this.bulletBounce.src = './sounds/smb_bump.wav';
+  this.brickSound.src = './sounds/smb_breakblock.wav';
+  this.extraLifeSound.src = './sounds/smb_coin.wav';
+  this.arrowSound.src = './sounds/arrowSound.mp3';
 }
 
 Game.prototype.play = function() {
@@ -27,6 +45,7 @@ Game.prototype.play = function() {
 Game.prototype.startLoop = function () {
   
   this.bullet = new Bullet (this.canvasElement);
+  this.gunReloadSound.play();
   this.brick = new Brick (this.canvasElement);
   this.enemy = new Enemy (this.canvasElement);
   this.enemy2 = new Enemy2 (this.canvasElement);
@@ -37,6 +56,7 @@ Game.prototype.startLoop = function () {
 
   this.shootBullet = function(event) {
     if (event.key === ' ') {
+      this.gunShotSound.play();
       this.bullet.startMovement(1);
     } 
     
@@ -44,9 +64,11 @@ Game.prototype.startLoop = function () {
 
   this.changeArrowDirection = function (event) {
     if (event.key === 's'){
+      this.arrowSound.play();
       this.arrow.moveArrow(1);
       this.bullet.setSpeedAngle(1);
     } else if (event.key === 'w'){
+      this.arrowSound.play();
       this.arrow.moveArrow(-1);
       this.bullet.setSpeedAngle(-1);
     }
@@ -115,24 +137,32 @@ Game.prototype.drawAll = function () {
 
 Game.prototype.checkAllCollisions = function () {
   if (this.bullet.checkCollisionWithBounce()){
+    this.bulletBounce.currentTime = 0;
+    this.bulletBounce.play();
     this.bullet.speed.y *= -1;
     this.tempScore += 3;
   }
   if (this.bullet.checkCollisionWithMiss()){
     if (this.lives > 1){
+      this.missSound.play();
       this.lives--;
       this.tempScore = 0;
       this.updateLife();
       this.bullet = new Bullet (this.canvasElement);
+      this.gunReloadSound.play();
       this.arrow = new Arrow (this.canvasElement);
       this.extraLife = new ExtraLife (this.canvasElement);
       this.enemy = new Enemy (this.canvasElement);
       this.enemy2 = new Enemy2 (this.canvasElement);
     } else{
+      this.missSound.play();
+      document.removeEventListener ('keydown', this.shootBullet);
+      document.removeEventListener ('keyup', this.changeArrowDirection);
       this.gameIsOver = true;
       this.endGame();
     }
   }else if (this.bullet.checkCollisionWithBrick(this.brick)){
+    this.brickSound.play();
     this.score += 10 + this.tempScore;
     this.level++;
     this.tempScore = 0;
@@ -141,6 +171,7 @@ Game.prototype.checkAllCollisions = function () {
     this.brick.setSpeed(1);
     this.brick.setLength(-10);
     this.bullet = new Bullet (this.canvasElement);
+    this.gunReloadSound.play();
     this.arrow = new Arrow (this.canvasElement);
     this.extraLife = new ExtraLife (this.canvasElement);
     this.enemy = new Enemy (this.canvasElement);
@@ -153,15 +184,20 @@ Game.prototype.checkAllCollisions = function () {
   if (this.level > 1){
     if (this.bullet.checkCollisionWithEnemy(this.enemy)){
       if (this.lives > 1){
+        this.enemySound.play();
         this.lives--;
         this.tempScore = 0;
         this.updateLife();
         this.bullet = new Bullet (this.canvasElement);
+        this.gunReloadSound.play();
         this.arrow = new Arrow (this.canvasElement);
         this.extraLife = new ExtraLife (this.canvasElement);
         this.enemy = new Enemy (this.canvasElement);
         this.enemy2 = new Enemy2 (this.canvasElement);
       } else{
+        this.enemySound.play();
+        document.removeEventListener ('keydown', this.shootBullet);
+        document.removeEventListener ('keyup', this.changeArrowDirection);
         this.gameIsOver = true;
         this.endGame();
       } 
@@ -170,15 +206,20 @@ Game.prototype.checkAllCollisions = function () {
   if (this.level > 5){
     if (this.bullet.checkCollisionWithEnemy2(this.enemy2)){
       if (this.lives > 1){
+        this.enemySound.play();
         this.lives--;
         this.tempScore = 0;
         this.updateLife();
         this.bullet = new Bullet (this.canvasElement);
+        this.gunReloadSound.play();
         this.arrow = new Arrow (this.canvasElement);
         this.extraLife = new ExtraLife (this.canvasElement);
         this.enemy = new Enemy (this.canvasElement);
         this.enemy2 = new Enemy2 (this.canvasElement);
       } else{
+        this.enemySound.play();
+        document.removeEventListener ('keydown', this.shootBullet);
+        document.removeEventListener ('keyup', this.changeArrowDirection);
         this.gameIsOver = true;
         this.endGame();
       } 
@@ -186,6 +227,7 @@ Game.prototype.checkAllCollisions = function () {
   }
   if (this.level > 2 && this.isOdd(this.level) && this.extraLife && !(this.lives > 3)){
     if (this.bullet.checkCollisionWithExtraLife(this.extraLife)){
+      this.extraLifeSound.play();
       this.lives++;
       this.extraLife = null;
       this.updateLife();
@@ -194,15 +236,20 @@ Game.prototype.checkAllCollisions = function () {
   if (this.level > 3){
     if (this.bullet.checkCollisionWithWallBottom(this.wallBottom)){
       if (this.lives > 1){
+        this.wallSound.play();
         this.lives--;
         this.tempScore = 0;
         this.updateLife();
         this.bullet = new Bullet (this.canvasElement);
+        this.gunReloadSound.play();
         this.arrow = new Arrow (this.canvasElement);
         this.extraLife = new ExtraLife (this.canvasElement);
         this.enemy = new Enemy (this.canvasElement);
         this.enemy2 = new Enemy2 (this.canvasElement);
       } else{
+        this.wallSound.play();
+        document.removeEventListener ('keydown', this.shootBullet);
+        document.removeEventListener ('keyup', this.changeArrowDirection);
         this.gameIsOver = true;
         this.endGame();
       }
@@ -211,15 +258,20 @@ Game.prototype.checkAllCollisions = function () {
   if (this.level > 4){
     if (this.bullet.checkCollisionWithWallTop(this.wallTop)){
       if (this.lives > 1){
+        this.wallSound.play();
         this.lives--;
         this.tempScore = 0;
         this.updateLife();
         this.bullet = new Bullet (this.canvasElement);
+        this.gunReloadSound.play();
         this.arrow = new Arrow (this.canvasElement);
         this.extraLife = new ExtraLife (this.canvasElement);
         this.enemy = new Enemy (this.canvasElement);
         this.enemy2 = new Enemy2 (this.canvasElement);
       } else{
+        this.wallSound.play();
+        document.removeEventListener ('keydown', this.shootBullet);
+        document.removeEventListener ('keyup', this.changeArrowDirection);
         this.gameIsOver = true;
         this.endGame();
       }

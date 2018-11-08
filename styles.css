@@ -65,6 +65,10 @@ canvas {
   color: #CECECE;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 
 /* ---- sections ---- */
 

@@ -26,6 +26,25 @@ function main() {
   var finalLevel;
   var finalScore;
 
+  var buttonSound = document.createElement('audio');
+  buttonSound.src = './sounds/buttonClick.mp3';
+
+  this.gameOverSound = document.createElement('audio');
+  this.gameOverSound.src = './sounds/smb_gameover.wav';
+
+  function gameOverSoundPlay () {
+    gameOverSound.play();
+  }
+
+  function gameOverSoundStop () {
+    gameOverSound.pause();
+    gameOverSound.currentTime = 0.0;
+  }
+
+  function buttonClick () {
+    buttonSound.play();
+  }
+
   var game;
   
   function buildSplash() {
@@ -57,6 +76,7 @@ function main() {
   }
 
   function destroySplash() {
+    buttonClick();
     splashScreen.remove();
     startButton.removeEventListener('click', destroySplash);
     howToButton.removeEventListener('click', destroySplash);
@@ -163,9 +183,13 @@ function main() {
     restartButton.addEventListener('click', destroyGameOverScreen);
     backToMenuButton.addEventListener('click', destroyGameOverScreen);
 
+    gameOverSoundPlay();
+
   }
 
   function destroyGameOverScreen(event) {
+    gameOverSoundStop();
+    buttonClick();
     gameOverScreen.remove();
     restartButton.removeEventListener('click', destroyGameOverScreen);
     backToMenuButton.removeEventListener('click', destroyGameOverScreen);
@@ -191,8 +215,8 @@ function main() {
             <li>Press <span>"w"</span> and <span>"s"</span> to aim the shot</li>
             <li>Breaking the brick gives you <span>10 points</span></li>
             <li>Every bounce made before breaking a brick gives you <span>3 points</span></li>
-            <li>Avoid this enemies <img src="" alt=""></li>
-            <li>Try to catch this extra bullets <img src="" alt=""></li>
+            <li>Avoid this enemies <img src="./images/modern-15-skull.svg.png" alt="enemy"> and metallic walls<img src="" alt=""></li>
+            <li>Try to catch this extra bullets <img src="./images/modern-15-star.svg.png" alt="star"></li>
             <li>Try to make the maximum points before running out of ammunition!</li>
           </ul>
         </section>
@@ -213,6 +237,7 @@ function main() {
   }
 
   function destroyHowToPlayScreen () {
+    buttonClick();
     howToPlayScreen.remove();
 
     backToMenuButton.removeEventListener('click', destroyHowToPlayScreen);
