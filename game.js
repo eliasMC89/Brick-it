@@ -15,6 +15,7 @@ function Game (canvasElement, lives) {
   this.arrow = null;
   this.wallBottom = null;
   this.wallTop = null;
+  //audio
   this.wallSound = document.createElement('audio');
   this.gunShotSound = document.createElement('audio');
   this.gunReloadSound = document.createElement('audio');

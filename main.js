@@ -23,22 +23,35 @@ function main() {
   var scoreElement;
   var levelElement;
 
-  var finalLevel;
-  var finalScore;
+  // var finalLevel;
+  // var finalScore;
 
+  //audio
   var buttonSound = document.createElement('audio');
   buttonSound.src = './sounds/buttonClick.mp3';
 
-  this.gameOverSound = document.createElement('audio');
-  this.gameOverSound.src = './sounds/smb_gameover.wav';
+  var gameOverSound = document.createElement('audio');
+  var gameSound = document.createElement('audio');
+  gameOverSound.src = './sounds/smb_gameover.wav';
+  gameSound.src = './sounds/backMusic-puzzleQuest.mp3';
 
   function gameOverSoundPlay () {
     gameOverSound.play();
   }
 
+  function gameSoundPlay () {
+    gameSound.volume = 0.3;
+    gameSound.play();
+  }
+
   function gameOverSoundStop () {
     gameOverSound.pause();
     gameOverSound.currentTime = 0.0;
+  }
+
+  function gameSoundStop () {
+    gameSound.pause();
+    gameSound.currentTime = 0.0;
   }
 
   function buttonClick () {
@@ -108,6 +121,8 @@ function main() {
     `);
 
     document.body.prepend(gameScreen);
+
+    gameSoundPlay();
     
     var canvasElement = document.querySelector('canvas');
     livesElement = document.querySelector('span.lives-value');
@@ -141,6 +156,7 @@ function main() {
   }
 
   function destroyGameScreen() {
+    gameSoundStop();
     gameScreen.remove();
     buildGameOverScreen();
   }
