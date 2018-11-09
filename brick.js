@@ -10,7 +10,7 @@ function Brick (canvasElement) {
   this.canvasElement = canvasElement;
   this.ctx = this.canvasElement.getContext('2d');
   this.image = new Image();
-  this.image.src = './images/brickBackground.jpg';
+  this.image.src = './images/brickWall2.jpeg';
   this.brickLimitSound = document.createElement('audio');
   this.brickLimitSound.src = './sounds/brickLimit.mp3';
 }

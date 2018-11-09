@@ -17,14 +17,10 @@ function main() {
   var howToButton;
   var restartButton;
   var backToMenuButton;
-  //var buttons;
 
   var livesElement;
   var scoreElement;
   var levelElement;
-
-  // var finalLevel;
-  // var finalScore;
 
   //audio
   var buttonSound = document.createElement('audio');

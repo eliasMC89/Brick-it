@@ -19,6 +19,7 @@ body {
 
 body {
   text-align: center;
+  background-color: #D8D8D8;
 }
 
 h1 {
@@ -84,10 +85,11 @@ section.splash-header {
 .splash-header .title {
   font-size: 110px;
   padding: 40px;
+  border-radius: 5px;
 }
 
 .splash-header h1.title:hover {
-  background: url('./images/brickBackground.jpg');
+  background: url('./images/brickWall2.jpeg');
   background-repeat: no-repeat;
   background-size: 100%;
   color: #F7F7F7;
