@@ -33,14 +33,6 @@ Enemy.prototype.setDirection = function (newDirection) {
   this.direction = newDirection;
 }
 
-// Enemy.prototype.setSpeed = function (speedVariation) {
-//   this.speed += speedVariation;
-// }
-
-// Enemy.prototype.setSize = function (sizeVariation) {
-//   this.size += sizeVariation;
-// }
-
 Enemy.prototype.checkCollisionWithLimits = function () {
   if (this.y <= this.size) {
     this.setDirection(1);

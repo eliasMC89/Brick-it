@@ -106,6 +106,20 @@ Game.prototype.updateAll = function (event) {
   if (this.level > 2 && this.isOdd(this.level) && this.extraLife && !(this.lives > 3)){
     this.extraLife.update();
   }
+  if (this.level > 3 && this.level !== 5){
+    if (this.level === 4){
+      this.wallBottom.setHeightAndPosition(90);
+    } else {
+      this.wallBottom.setHeightAndPosition(10);
+    }
+  }
+  if (this.level > 4){
+    if (this.level === 5){
+      this.wallTop.setHeightAndPosition(90);
+    } else {
+      this.wallTop.setHeightAndPosition(10);
+    }
+  }
 }
 
 Game.prototype.clearAll = function () {
