@@ -48,6 +48,7 @@ Game.prototype.startLoop = function () {
   this.bullet = new Bullet (this.canvasElement);
   this.gunReloadSound.play();
   this.brick = new Brick (this.canvasElement);
+  // Both enemies should use the same constructor as they are too similar
   this.enemy = new Enemy (this.canvasElement);
   this.enemy2 = new Enemy2 (this.canvasElement);
   this.extraLife = new ExtraLife (this.canvasElement);
