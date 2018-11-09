@@ -78,13 +78,13 @@ button:hover {
 /*--splash screen--*/
 
 section.splash-header {
-  padding-top: 50px;
+  padding-top: 30px;
   margin-bottom: 50px;
 }
 
 .splash-header .title {
   font-size: 110px;
-  padding: 40px;
+  padding: 10px;
   border-radius: 5px;
 }
 
