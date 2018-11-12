@@ -1,62 +1,61 @@
-'use strict'
+'use strict';
 
-function buildDOM(html) {
-  var div = document.createElement('div');
+const buildDOM = html => {
+  const div = document.createElement('div');
   div.innerHTML = html;
   return div.children[0];
-}
+};
 
-function main() {
+function main () {
+  let splashScreen = null;
+  let gameScreen = null;
+  let gameOverScreen = null;
+  let howToPlayScreen = null;
 
-  var splashScreen;
-  var gameScreen;
-  var gameOverScreen;
-  var howToPlayScreen;
+  let startButton = null;
+  let howToButton = null;
+  let restartButton = null;
+  let backToMenuButton = null;
 
-  var startButton;
-  var howToButton;
-  var restartButton;
-  var backToMenuButton;
+  let livesElement = null;
+  let scoreElement = null;
+  let levelElement = null;
 
-  var livesElement;
-  var scoreElement;
-  var levelElement;
+  let game = null;
 
-  //audio
-  var buttonSound = document.createElement('audio');
+  // audio
+  const buttonSound = document.createElement('audio');
   buttonSound.src = './sounds/buttonClick.mp3';
 
-  var gameOverSound = document.createElement('audio');
-  var gameSound = document.createElement('audio');
+  const gameOverSound = document.createElement('audio');
+  const gameSound = document.createElement('audio');
   gameOverSound.src = './sounds/smb_gameover.wav';
   gameSound.src = './sounds/backMusic-puzzleQuest.mp3';
 
-  function gameOverSoundPlay () {
+  const gameOverSoundPlay = () => {
     gameOverSound.play();
-  }
+  };
 
-  function gameSoundPlay () {
+  const gameSoundPlay = () => {
     gameSound.volume = 0.3;
     gameSound.play();
-  }
+  };
 
-  function gameOverSoundStop () {
+  const gameOverSoundStop = () => {
     gameOverSound.pause();
     gameOverSound.currentTime = 0.0;
-  }
+  };
 
-  function gameSoundStop () {
+  const gameSoundStop = () => {
     gameSound.pause();
     gameSound.currentTime = 0.0;
-  }
+  };
 
-  function buttonClick () {
+  const buttonClick = () => {
     buttonSound.play();
-  }
+  };
 
-  var game;
-  
-  function buildSplash() {
+  const buildSplash = () => {
     splashScreen = buildDOM(`
       <main class="splash-main">
         <section class="splash-header container">
@@ -71,7 +70,7 @@ function main() {
           </div>
         </section>
       </main>
-    `)
+    `);
 
     document.body.prepend(splashScreen);
 
@@ -80,23 +79,22 @@ function main() {
 
     startButton.addEventListener('click', destroySplash);
     howToButton.addEventListener('click', destroySplash);
+  };
 
-  }
-
-  function destroySplash() {
+  const destroySplash = () => {
     buttonClick();
     splashScreen.remove();
     startButton.removeEventListener('click', destroySplash);
     howToButton.removeEventListener('click', destroySplash);
 
-    if (event.target.className === "play-btn button"){
+    if (window.event.target.className === 'play-btn button') {
       buildGameScreen(3);
-    }else if (event.target.className === "instructions-btn button") {
+    } else if (window.event.target.className === 'instructions-btn button') {
       buildHowToPlayScreen();
     }
-  }
+  };
 
-  function buildGameScreen(lives) {
+  const buildGameScreen = lives => {
     gameScreen = buildDOM(`
       <main class="game-main">
         <section class="info container">
@@ -119,45 +117,42 @@ function main() {
     document.body.prepend(gameScreen);
 
     gameSoundPlay();
-    
+
     var canvasElement = document.querySelector('canvas');
     livesElement = document.querySelector('span.lives-value');
     scoreElement = document.querySelector('span.score-value');
     levelElement = document.querySelector('span.level-value');
 
-
-    
     livesElement.innerText = lives;
-    
-    game = new Game (canvasElement, lives);
+
+    game = new Game(canvasElement, lives);
     game.play();
 
     game.gameOverCallback(destroyGameScreen);
     game.livesUpdateCallback(updateLives);
     game.scoreUpdateCallback(updateScore);
     game.levelUpdateCallback(updateLevel);
+  };
 
-  }
-
-  function updateLives() {
+  const updateLives = () => {
     livesElement.innerText = game.lives;
-  }
+  };
 
-  function updateScore() {
+  const updateScore = () => {
     scoreElement.innerText = game.score;
-  }
+  };
 
-  function updateLevel() {
+  const updateLevel = () => {
     levelElement.innerText = game.level;
-  }
+  };
 
-  function destroyGameScreen() {
+  const destroyGameScreen = () => {
     gameSoundStop();
     gameScreen.remove();
     buildGameOverScreen();
-  }
+  };
 
-  function buildGameOverScreen() {
+  const buildGameOverScreen = () => {
     gameOverScreen = buildDOM(`
       <main>
         <section class="game-over-header container">
@@ -177,7 +172,6 @@ function main() {
         </section>
       </main>  
     `);
-    
 
     document.body.prepend(gameOverScreen);
 
@@ -194,27 +188,24 @@ function main() {
     backToMenuButton.addEventListener('click', destroyGameOverScreen);
 
     gameOverSoundPlay();
+  };
 
-  }
-
-  function destroyGameOverScreen(event) {
+  const destroyGameOverScreen = even => {
     gameOverSoundStop();
     buttonClick();
     gameOverScreen.remove();
     restartButton.removeEventListener('click', destroyGameOverScreen);
     backToMenuButton.removeEventListener('click', destroyGameOverScreen);
 
-
-
-    if (event.target.className === "restart button"){
+    if (window.event.target.className === 'restart button') {
       buildGameScreen(3);
-    }else if (event.target.className === "backToMenu button") {
+    } else if (window.event.target.className === 'backToMenu button') {
       buildSplash();
-    } 
-  }
+    }
+  };
 
-  function buildHowToPlayScreen() {
-    howToPlayScreen = buildDOM (`
+  const buildHowToPlayScreen = () => {
+    howToPlayScreen = buildDOM(`
       <main class="instructions-main">
         <section class="instructions instructions-header container">
           <h1 class="instructions-title">How to Play</h1>
@@ -240,17 +231,16 @@ function main() {
     backToMenuButton = document.querySelector('.back-btn');
 
     backToMenuButton.addEventListener('click', destroyHowToPlayScreen);
+  };
 
-  }
-
-  function destroyHowToPlayScreen () {
+  const destroyHowToPlayScreen = () => {
     buttonClick();
     howToPlayScreen.remove();
 
     backToMenuButton.removeEventListener('click', destroyHowToPlayScreen);
 
     buildSplash();
-  }
+  };
 
   // High scores
 
@@ -288,7 +278,6 @@ function main() {
   // }
 
   buildSplash();
-
 }
 
 window.addEventListener('load', main);
